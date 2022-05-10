@@ -85,3 +85,31 @@ cd ./docker
 ./buildimages.sh
 ```
 If you are on Windows, you have to run the equivalent commands in you preferred command line.
+
+### Manual Fuseki Backup
+We assume that running the MetaDataBroker container in some environment (e.g. Docker),
+under some *\<url\>* (e.g. localhost:3030). The manual backup can be done in a
+few simple steps. Make sure that the Web-UI of the Fuseki server is available
+from your machine.
+* If you run the MetaDataBroker on your local machine, it is the case. Use http://*\<url\>*.
+* If it is running remotely, you might do a port-forwarding to make it available
+to you. For instance if it is running on a virtual machine use *ssh -L [LOCAL_IP:]LOCAL_PORT:DESTINATION:DESTINATION_PORT*.
+
+We assume, that the Fuseki Web-UI is available to you.
+1. Open the Web-UI
+2. Go to *manage datasets*
+3. Trigger a backup for the connector dataset (*/connector*) by clicking on the *backup* button
+4. Access the Fuseki-server via ssh and navigate to */fuseki/backup/* (e.g. *docker exec -ti \<Container-Name\> sh*). Here you find all backups. Notice the filename of the most recent file. This is indicated by a date-time string in the filename. It should be a gz-file.
+5. Copy this file via scp to a backup storage (e.g. *docker cp \<Container-Name\>:\<path in the containter to backup> <path on the local machine\>*)
+
+Congratulations, the backup was successfully. To restore a certain backup follow
+the following steps. We assume that your Fuseki-server is empty, otherwise you
+should first drop the */connector* dataset (*manage datasets* -> select *remove*).
+1. Open the Web-UI
+2. Go to *manage datasets*
+3. Navigate to *add new dataset* and add the a dataset with name *connector*
+4. Go to *dataset*
+5. Navigate to *upload files*, select the backup (gzip file) you want to restore
+and confirm the *upload all* button.
+
+Congratulations, the restoring an existing backup was successfully.
