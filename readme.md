@@ -15,7 +15,7 @@ and install it into your repository, e.g. locally using
 ```sh
 mvn install
 ```
-If you do not prefer to build it locally, but in a build pipeline, you will want to push the artifact of the open source broker into an Artifactory. Please adjust the Artifactory configuration in the pom.xml of the *metadata-broker-core*, *broker-common*, *indexing-common*  and the *mds-elasticsearch-indexing-provider* modules accordingly. All of them depend on the  implementation of the open source MetaDataBroker. Under the assumption that this configuration works we proceed.</br></br>
+If you do not prefer to build it locally, but in a build pipeline, you will want to push the artifact of the open source broker into an Artifactory. Please adjust the Artifactory configuration in the pom.xml of the *metadata-broker-core*, *broker-common*, *indexing-common*  and the *mds-elasticsearch-indexing-provider* modules accordingly. All of them depend on the  implementation of the open source MetaDataBroker. Under the assumption that this configuration works we proceed.
 
 ### Buildung the MDS-Extension MetaDataBroker
 Now clone **this** repository and repeat the procedure above. Build the MetaDataBroker
@@ -36,14 +36,22 @@ Now open the module *metadata-broker-core* in your favorite IDE (we tested it wi
 ### Manual Testing
 In order to test the core use-cases of the MetaDataBroker we refer to the provided [Postman Collection](https://github.com/Mobility-Data-Space/MDS-Broker-Core/blob/development/IDS%20Broker%20ES%20Tests%20with%20MDS.postman_collection.json). If you add this collection to you postman workspace you can easily validate the use cases of the broker. By default you find
 * the elastic search instance under http://localhost:9200; the registered connectors and resources under http://localhost:9200/registrations and http://localhost:9200/resources/, respectively
+
+
 ## Deployment
-The repository comes with scipts to build a default container.
-<div class="panel panel-warning">
-**Warning**
-{: .panel-heading}
-<div class="panel-body">
+The repository comes with scripts to build a default container.</br></br>
+:warning: **WARNING**: The container provided is for demonstration purpose and not thought to be deployed to a critical infrastructure. The base images that are used are provided by trustful organizations
+and are the "official" ones from DockerHub. However, we are aware of a few security vulnerabilities which are part of the images although they are not used by the MetaDataBroker. Therefore we recommand to deploy the MetaDataBroker based on base images that you build or at least from sources that your trust.  </br></br>
 
-WARNING DESCRIPTION
-
-</div>
-</div>
+As the MetaDataBroker needs access to a Fuseki Server as well as an ElasticSearch instance, we provide a build script for a Docker image of
+* the [MetaDataBroker](https://github.com/Mobility-Data-Space/MDS-Broker-Core/blob/development/docker/metadata-broker-core/Dockerfile),
+* an instance of a [Fuseki-Server](https://github.com/Mobility-Data-Space/MDS-Broker-Core/blob/development/docker/fuseki/Dockerfile) as well as
+* an instance of an NGINX as [reverse proxy](https://github.com/Mobility-Data-Space/MDS-Broker-Core/blob/development/docker/reverseproxy/Dockerfile).
+Moreover, to demonstrate the local deployment of the MetaDataBroker setup to Docker we provide a [Docker-compose file](https://github.com/Mobility-Data-Space/MDS-Broker-Core/blob/development/docker/composefiles/localhost/docker-compose.yml).
+### Building the Docker images
+If you are on linux, building the Docker images is rather simple. We provide a [shell script](https://github.com/Mobility-Data-Space/MDS-Broker-Core/blob/development/docker/buildImages.sh) to build the images. We assume that you already build the MetaDataBroker as described in section "Building". Now you "cd" into the *docker* folder and run the shell script
+```sh
+cd ./docker
+./buildimages.sh
+```
+If you are on Windows, you have to run the equivalent commands in you preferred command line.
