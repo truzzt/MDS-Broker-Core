@@ -15,7 +15,7 @@ import java.nio.file.Path;
 import java.util.Iterator;
 import java.util.logging.Logger;
 
-public class UpdateMessageTest {
+public class pdateMessageTest {
     @Test
     public void UpdateMessage() throws IOException {
         Path filePath = Path.of("C:\\Users\\twirtz\\01 - Projekte\\01. - Laufend\\13. - MetaDataBroker\\broker-paris-core-container\\metadata-broker-core\\src\\test\\resources\\msg.txt");
