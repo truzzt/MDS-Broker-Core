@@ -1,7 +1,7 @@
 version: '3'
 services:
   broker-reverseproxy:
-    image: registry.gitlab.cc-asp.fraunhofer.de/eis-ids/broker/reverseproxy
+    image: mds/broker/reverseproxy:5.0.0-RELEASECANDIDATE
     volumes:
       #- /etc/idscert/localhost:/etc/cert/
       - c:/etc/idscert/localhost:/etc/cert/
@@ -10,7 +10,7 @@ services:
       - "443:443"
 
   broker-core:
-    image: registry.gitlab.cc-asp.fraunhofer.de/eis-ids/broker/core:5.0.0-MDS-TESTING
+    image: mds/broker/core:5.0.0-RELEASECANDIDATE
     volumes:
       #- /etc/idscert/localhost:/etc/cert/
       - c:/etc/idscert/localhost:/etc/cert/
@@ -29,7 +29,7 @@ services:
       - "8080"
 
   broker-fuseki:
-    image: registry.gitlab.cc-asp.fraunhofer.de/eis-ids/broker/fuseki
+    image: mds/broker/fuseki:5.0.0-RELEASECANDIDATE
     volumes:
       - broker-fuseki:/fuseki
     expose:
