@@ -1,13 +1,41 @@
 # MDS Broker Repository
 This repository provides the source code for the extentions of the open-source implementation of the [MetaDataBroker](https://github.com/International-Data-Spaces-Association/metadata-broker-open-core). Its central extension is an implementation of the Indexing-Interface that provide the core functionality for the front-end as well as the relevant https-Endpoints for the front-end.
 
-## Building
+## International Data Spaces Metadata Broker (Fraunhofer IAIS/EIS implementation)
+
+This is an implementation of an International Data Spaces (IDS) Metadata Broker, which is a registry for IDS Connector self-description documents.
+It is currently under development and intends to act as a reference for members of the International Data Spaces Association (IDSA) to help with the implementation of custom Broker solutions.</br></br>
+Work on this repository closely aligns with the [IDS Handshake Document](https://industrialdataspace.jiveon.com/docs/DOC-1817),
+which describes the concepts of communication on the IDS in textual form.
+Some more detailed introductory material on the IDS Broker general concept is available in the form of a [slide deck](documentation/general/Broker_Overview_Slides.pdf).
+
+## Purpose
+
+The goal of this implementation is to show how the concepts introduced in the Handshake Document can be turned into an actual application.
+It, therefore, demonstrates the usage of the [IDS Information Model](https://github.com/International-Data-Spaces-Association/InformationModel) for core communication tasks.
+More specifically, it shows:
+
+* Implementation of the messaging interfaces for IDS infrastructure-level communication,
+* Information flow of typical interactions with the Broker
+
+Security is currently supported in terms of TLS via a reverse proxy.
+
+## Architecture
+
+![Broker Architecture](broker_architecture.png)
+
+The diagram above provides an overview of the IAIS/EIS Broker's architecture. The technical interface for human users and connectors is supplied
+by a reverse proxy, which serves a GUI and an SSL-secured machine-invokable API. Incoming requests are either served by the web frontend or routed to a message
+handler component, which, depending on the message type, accesses the backend storage systems.   
+
+
+## Building the MDS-Extention MetaDataBroker
 ### Buildung the Open Source MetaDataBroker
 As the MetaDataBroker is an extension to the open source implementation of the MetaDataBroker, you can either build the MetaDataBroker from a particular branch of the open-source broker or query a particular artifact from the Fraunhofer IAIS Artifactory. We start with the former approach an first build the open source broker. First checkout the repository of the open core broker
 ```sh
 git clone https://github.com/International-Data-Spaces-Association/metadata-broker-open-core.git
 ```
-'cd' into the repository and checkout the branch or tag you want to use as a basis for the MetaDataBroker extension of the open source broker. Please have in mind, that the extension was provided with respect to a particular release of the open source broker as well as the [information model](https://github.com/International-Data-Spaces-Association/InformationModel). </br></br> Now that you have chosen your preferred branch or tag of the open source MetaDataBroker you simply build it with maven
+'cd' into the repository and checkout the branch or tag you want to use as a basis for the MetaDataBroker extension of the open source broker. **Important**: Currently we are sitting on a particular [feature branch](https://github.com/International-Data-Spaces-Association/metadata-broker-open-core/tree/feature/fixUpdatingResources) of the open source MetaDataBroker. Please have in mind, that the extension was provided with respect to a particular release of the open source broker as well as the [information model](https://github.com/International-Data-Spaces-Association/InformationModel). </br></br> Now that you have chosen your preferred branch or tag of the open source MetaDataBroker you simply build it with maven
 ```sh
 mvn clean package
 ```
