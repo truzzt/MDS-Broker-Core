@@ -48,6 +48,8 @@ As the MetaDataBroker needs access to a Fuseki Server as well as an ElasticSearc
 * an instance of a [Fuseki-Server](https://github.com/Mobility-Data-Space/MDS-Broker-Core/blob/development/docker/fuseki/Dockerfile) as well as
 * an instance of an NGINX as [reverse proxy](https://github.com/Mobility-Data-Space/MDS-Broker-Core/blob/development/docker/reverseproxy/Dockerfile).
 Moreover, to demonstrate the local deployment of the MetaDataBroker setup to Docker we provide a [Docker-compose file](https://github.com/Mobility-Data-Space/MDS-Broker-Core/blob/development/docker/composefiles/localhost/docker-compose.yml).
+
+
 ### Building the Docker images
 If you are on linux, building the Docker images is rather simple. We provide a [shell script](https://github.com/Mobility-Data-Space/MDS-Broker-Core/blob/development/docker/buildImages.sh) to build the images. We assume that you already build the MetaDataBroker as described in section "Building". Now you "cd" into the *docker* folder and run the shell script
 ```sh
