@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <properties>
+        <rdf4j.version>3.4.0</rdf4j.version>
+        <jena.version>4.1.0</jena.version>
+        <ids-components.version>5.0.0-SNAPSHOT</ids-components.version>
+        <spring-boot.version>2.1.16.RELEASE</spring-boot.version>
+        <jackson.version>2.11.0</jackson.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <revision>5.0.0-RELEASECANDIDATE</revision>
+    </properties>
+
+    <groupId>de.fraunhofer.iais.eis.ids</groupId>
+    <artifactId>broker-mds-core-container</artifactId>
+    <version>${revision}</version>
+    <packaging>pom</packaging>
+
+
+    <modules>
+        <module>index-common</module>
+        <module>broker-common</module>
+        <module>metadata-broker-core</module>
+        <module>mds-elasticsearch-indexing-provider</module>
+    </modules>
+
+<!-- Only adding scope test dependencies here -->
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>testcontainers</artifactId>
+            <version>1.12.5</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>${project.basedir}/docker/metadata-broker-core</directory>
+                            <includes>
+                                <include>**/*.jar</include>
+                            </includes>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>flatten-maven-plugin</artifactId>
+                <version>1.2.2</version>
+                <configuration>
+                    <updatePomFile>true</updatePomFile>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>flatten</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>flatten</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>flatten.clean</id>
+                        <phase>clean</phase>
+                        <goals>
+                            <goal>clean</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <distributionManagement>
+        <repository>
+            <id>isst-repo</id>
+            <name>Maven repository at ISST</name>
+            <url>https://mvn.isst.fraunhofer.de/nexus/repository/ids-local</url>
+        </repository>
+    </distributionManagement>
+
+    <repositories>
+        <repository>
+            <id>eis-public-repo</id>
+            <name>maven-public</name>
+            <url>https://maven.iais.fraunhofer.de/artifactory/eis-ids-public</url>
+        </repository>
+            <repository>
+                <id>eis-snapshot-repo</id>
+                <name>maven-public</name>
+                <url>https://maven.iais.fraunhofer.de/artifactory/eis-ids-snapshot</url>
+            </repository>
+    </repositories>
+</project>

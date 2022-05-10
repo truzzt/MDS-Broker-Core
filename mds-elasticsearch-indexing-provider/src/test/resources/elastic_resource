@@ -1,0 +1,217 @@
+{
+
+  "@type" : "ids:DataResource",
+
+  "@id" : "http://localhost:8080/connectors/-1313459954/-430010600/1739017800",
+
+  "ids:language" : [ ],
+
+  "ids:version" : null,
+
+  "ids:contentType" : null,
+
+  "ids:variant" : null,
+
+  "ids:created" : 1593807157449,
+
+  "ids:description" : [ {
+
+    "@value" : "new",
+
+    "@language" : "en"
+
+  } ],
+
+  "ids:title" : [ {
+
+    "@value" : "Checkduplicates_2",
+
+    "@language" : "de"
+
+  } ],
+
+  "http://www.w3.org/ns/adms#status" : [ ],
+
+  "ids:theme" : [ "http://publications.europa.eu/resource/authority/data-theme/TRAN" ],
+
+  "https://w3id.org/mdp/schema#virusCheckEnabled" : [ ],
+
+  "ids:defaultRepresentation" : [ ],
+
+  "ids:resourceEndpoint" : [ ],
+
+  "ids:temporalResolution" : null,
+
+  "ids:accrualPeriodicity" : null,
+
+  "ids:temporalCoverage" : [ ],
+
+  "https://w3id.org/mdp/schema#legalCheckEnabled" : [ ],
+
+  "http://www.w3.org/ns/dcat#contactPoint" : null,
+
+  "ids:shapesGraph" : null,
+
+  "https://w3id.org/mdp/schema#originalSourceFormat" : [ ],
+
+  "https://w3id.org/mdp/schema#schemaValidationEnabled" : [ ],
+
+  "ids:contractOffer" : [ ],
+
+  "ids:representation" : [ ],
+
+  "ids:keyword" : [ ],
+
+  "https://w3id.org/mdp/schema#retentionPeriod" : [ ],
+
+  "ids:resourcePart" : [ ],
+
+  "ids:paymentModality" : null,
+
+  "ids:publisher" : null,
+
+  "ids:sample" : [ ],
+
+  "ids:customLicense" : null,
+
+  "ids:sovereign" : null,
+
+  "ids:standardLicense" : "ids://dcat-ap.de/def/licenses/cc-by-nc/4.0",
+
+  "http://purl.org/dc/terms/rights" : [ ],
+
+  "ids:contentStandard" : null,
+
+  "ids:contentPart" : [ ],
+
+  "ids:modified" : null,
+
+  "ids:spatialCoverage" : [ ],
+
+  "https://w3id.org/mdp/schema#dataCategory" : [ ],
+
+  "https://w3id.org/mdp/schema#dataModel" : [ ],
+
+  "https://w3id.org/mdp/schema#similarTo" : [ ],
+
+  "https://w3id.org/mdp/schema#publicationId" : [ ],
+
+  "https://w3id.org/mdp/schema#networkCoverage" : [ ],
+
+  "https://w3id.org/mdp/schema#originalSource" : [ ],
+
+  "https://w3id.org/mdp/schema#originatedFrom" : [ ],
+
+  "https://eueip.github.io/napDCAT-AP/conditionForUse" : [ ],
+
+  "https://w3id.org/mdp/schema#resourceId" : [ ],
+
+  "http://purl.org/dc/terms/accessRights" : [ ],
+
+  "https://w3id.org/mdp/schema#mdpBrokering" : [ ],
+
+  "https://w3id.org/mdp/schema#transportMode" : [ ],
+
+  "https://w3id.org/mdp/schema#NASTAssessment" : [ ],
+
+  "https://w3id.org/mdp/schema#dataCategoryDetail" : [ ],
+
+  "https://w3id.org/mdp/schema#roadNetworkCoverageDescription" : [ ],
+
+  "https://w3id.org/mdp/schema#geoReferenceMethod" : [ ],
+
+  "https://w3id.org/mdp/schema#metaDataLanguage" : [ ],
+
+  "https://w3id.org/mdp/schema#qualityDescription" : [ ],
+
+  "https://w3id.org/mdp/schema#providerEndpoint" : [ ],
+
+  "http://www.w3.org/2002/07/owl#sameAs" : [ {
+
+    "@id" : "http://publications.europa.eu/resource/authority/data-theme/test1"
+
+  }, {
+
+    "@id" : "https://w3id.org/idsa/core/title/thisisthefirsttitle"
+
+  } ],
+
+  "https://w3id.org/idsa/core/keywords" : {
+
+    "@value" : "keyword_2",
+
+    "@language" : "de"
+
+  },
+
+  "as_JSON_LD" : {
+
+    "@context" : {
+
+      "ids" : "https://w3id.org/idsa/core/",
+
+      "idsc" : "https://w3id.org/idsa/code/"
+
+    },
+
+    "@type" : "ids:DataResource",
+
+    "@id" : "http://localhost:8080/connectors/-1313459954/-430010600/1739017800",
+
+    "ids:created" : {
+
+      "@value" : "2020-07-03T20:12:37.449Z",
+
+      "@type" : "http://www.w3.org/2001/XMLSchema#dateTimeStamp"
+
+    },
+
+    "ids:description" : [ {
+
+      "@value" : "new",
+
+      "@language" : "en"
+
+    } ],
+
+    "ids:title" : [ {
+
+      "@value" : "Checkduplicates_2",
+
+      "@language" : "de"
+
+    } ],
+
+    "ids:theme" : [ {
+
+      "@id" : "http://publications.europa.eu/resource/authority/data-theme/TRAN"
+
+    } ],
+
+    "ids:standardLicense" : {
+
+      "@id" : "ids://dcat-ap.de/def/licenses/cc-by-nc/4.0"
+
+    },
+
+    "http://www.w3.org/2002/07/owl#sameAs" : [ {
+
+      "@id" : "http://publications.europa.eu/resource/authority/data-theme/test1"
+
+    }, {
+
+      "@id" : "https://w3id.org/idsa/core/title/thisisthefirsttitle"
+
+    } ],
+
+    "https://w3id.org/idsa/core/keywords" : {
+
+      "@value" : "keyword_2",
+
+      "@language" : "de"
+
+    }
+
+  }
+
+}

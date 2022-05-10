@@ -1,0 +1,14 @@
+{
+  "@context" : {
+    "ids" : "https://w3id.org/idsa/core/",
+    "idsc" : "https://w3id.org/idsa/code/"
+  },
+  "@type" : "ids:DataResource",
+  "@id" : "https://test.org/resourche-with-URI",
+  "http://www.w3.org/ns/dcat#contactPoint" :{
+    "@id" : "https://w3id.org/idsa/autogen/participant/ff5e56f0-f031-4bc4-9f53-1b0e0b982d82"
+  },
+  "ids:variant" : {
+        "@id": "https://w3id.org/idsa/autogen/resource/ff5e56f0-f031-4bc4-9f53-222224r5t"
+  }
+}

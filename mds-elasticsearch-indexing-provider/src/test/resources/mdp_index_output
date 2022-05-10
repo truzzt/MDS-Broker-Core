@@ -1,0 +1,91 @@
+{
+  "ids:customLicense": null,
+  "https://w3id.org/mdp/schema#NASTAssessment": [],
+  "@type": "ids:DataResource",
+  "ids:theme": [],
+  "ids:description": [
+    {
+      "@value": "Description value",
+      "@type": "http://www.w3.org/2001/XMLSchema#string"
+    }
+  ],
+  "ids:modified": 1639566750992,
+  "http://purl.org/dc/terms/accessRights": [
+    {
+      "@id": "http://publications.europa.eu/resource/authority/access-right/PUBLIC",
+      "properties": null
+    }
+  ],
+  "ids:shapesGraph": null,
+  "https://w3id.org/mdp/schema#resourceId": [],
+  "ids:resourcePart": [],
+  "ids:defaultRepresentation": [],
+  "https://w3id.org/mdp/schema#similarTo": [],
+  "https://w3id.org/mdp/schema#metaDataLanguage": [],
+  "https://w3id.org/mdp/schema#originalSourceFormat": [],
+  "ids:temporalResolution": null,
+  "ids:spatialCoverage": [],
+  "https://w3id.org/mdp/schema#qualityDescription": [],
+  "ids:title": [
+    {
+      "@value": "Title value",
+      "@type": "http://www.w3.org/2001/XMLSchema#string"
+    }
+  ],
+  "https://w3id.org/mdp/schema#originalSource": [],
+  "ids:contentType": null,
+  "@id": "http://localhost:8080/catalog/1000000000/1000000000/-1000000000",
+  "ids:variant": null,
+  "ids:paymentModality": null,
+  "http://www.w3.org/2002/07/owl#sameAs": "http://w3id.org/mdp/metadata/1",
+  "https://w3id.org/mdp/schema#networkCoverage": [
+    {
+      "@id": "https://w3id.org/mdp/schema/network_coverage#NETWORK_OTHER",
+      "properties": null
+    }
+  ],
+  "ids:version": null,
+  "ids:representation": [],
+  "https://w3id.org/mdp/schema#virusCheckEnabled": [],
+  "http://www.w3.org/ns/adms#status": [
+    {
+      "@id": "https://w3id.org/mdp/schema/status#PUBLISHED",
+      "properties": null
+    }
+  ],
+  "ids:created": 1639480350991,
+  "https://w3id.org/mdp/schema#mdpBrokering": [
+    true
+  ],
+  "https://w3id.org/mdp/schema#retentionPeriod": [],
+  "https://w3id.org/mdp/schema#schemaValidationEnabled": [],
+  "https://w3id.org/mdp/schema#legalCheckEnabled": [],
+  "https://w3id.org/mdp/schema#originatedFrom": [],
+  "https://w3id.org/mdp/schema#dataCategory": [
+    {
+      "@id": "https://w3id.org/mdp/schema/data_categories#STATIC_ROAD_DATA",
+      "properties": null
+    }
+  ],
+  "ids:contentStandard": null,
+  "https://w3id.org/mdp/schema#publicationId": [
+    1
+  ],
+  "https://w3id.org/mdp/schema#transportMode": [
+    {
+      "@id": "https://w3id.org/mdp/schema/transport_mode#TRANSPORT_OTHER",
+      "properties": null
+    },
+    {
+      "@id": "https://w3id.org/mdp/schema/transport_mode#DEMAND_RESPONSIVE_CAR_HIRE",
+      "properties": null
+    }
+  ],
+  "http://purl.org/dc/terms/rights": [
+    {
+      "@id": "https://w3id.org/mdp/schema/license#LICENSE_AND_FREE_OF_CHARGE",
+      "properties": null
+    }
+  ],
+  "https://w3id.org/mdp/schema#providerEndpoint": []
+}

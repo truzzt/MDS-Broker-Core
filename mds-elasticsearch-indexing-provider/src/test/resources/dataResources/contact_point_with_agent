@@ -1,0 +1,20 @@
+{
+  "@context" : {
+    "ids" : "https://w3id.org/idsa/core/",
+    "idsc" : "https://w3id.org/idsa/code/"
+  },
+  "@type" : "ids:DataResource",
+  "@id" : "https://test.org/resourche-with-agent",
+  "http://www.w3.org/ns/dcat#contactPoint" : [ {
+    "@type" : "ids:Person",
+    "@id" : "https://w3id.org/idsa/autogen/participant/ff5e56f0-f031-4bc4-9f53-1b0e0b982d82",
+    "ids:legalForm" : "GmBH"
+  } ],
+  "ids:variant" : {
+    "@type" : "ids:Resource",
+    "@id": "https://w3id.org/idsa/autogen/resource/ff5e56f0-f031-4bc4-9f53-12w239994r5t",
+    "ids:standardLicense": {
+        "@id": "http://example.com/123"
+    }
+  }
+}

@@ -1,0 +1,49 @@
+{
+    "@id": "http://publications.europa.eu/resource/authority/data-theme/test1",
+    "@type": "ids:DataResource",
+    "sameAs": "title:/thisisthefirsttitle",
+    "created": "2020-07-03T20:12:37.449Z",
+    "description": {
+        "@language": "en",
+        "@value": "new"
+    },
+    "keyword": {
+        "@language": "de",
+        "@value": "keyword_2"
+    },
+    "standardLicense": "ids://dcat-ap.de/def/licenses/cc-by-nc/4.0",
+    "theme": "http://publications.europa.eu/resource/authority/data-theme/TRAN",
+    "title": {
+        "@language": "de",
+        "@value": "Checkduplicates_2"
+    },
+    "@context": {
+        "sameAs": {
+            "@id": "http://www.w3.org/2002/07/owl#sameAs",
+            "@type": "@id"
+        },
+        "title": {
+            "@id": "https://w3id.org/idsa/core/title"
+        },
+        "description": {
+            "@id": "https://w3id.org/idsa/core/description"
+        },
+        "keyword": {
+            "@id": "https://w3id.org/idsa/core/keyword"
+        },
+        "standardLicense": {
+            "@id": "https://w3id.org/idsa/core/standardLicense",
+            "@type": "@id"
+        },
+        "theme": {
+            "@id": "https://w3id.org/idsa/core/theme",
+            "@type": "@id"
+        },
+        "created": {
+            "@id": "https://w3id.org/idsa/core/created",
+            "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+        },
+        "owl": "http://www.w3.org/2002/07/owl#",
+        "ids": "https://w3id.org/idsa/core/"
+    }
+}

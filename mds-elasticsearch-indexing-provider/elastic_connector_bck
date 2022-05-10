@@ -1,0 +1,450 @@
+{
+  "@type" : "ids:BaseConnector",
+  "publicKey" : [ {
+    "@type" : "ids:PublicKey",
+    "keyType" : {
+      "properties" : null,
+      "@id" : "https://w3id.org/idsa/code/RSA"
+    },
+    "keyValue" : "WlRBMFptUXdNakJsWVhNelpESjJNVGd3T0RBd01tSXpNRE13T1dRPQ==",
+    "@id" : "https://w3id.org/idsa/autogen/publicKey/b907841f-96ba-4c7a-8c46-a42e52800326"
+  } ],
+  "version" : "v1",
+  "maintainerAsObject" : [ {
+    "@type" : "ids:Participant",
+    "version" : null,
+    "legalName" : [ ],
+    "vatID" : null,
+    "legalForm" : "GmBH",
+    "jurisdiction" : null,
+    "memberPerson" : [ ],
+    "primarySite" : null,
+    "description" : [ ],
+    "title" : [ ],
+    "corporateEmailAddress" : [ ],
+    "participantCertification" : null,
+    "participantRefinement" : null,
+    "businessIdentifier" : [ ],
+    "corporateHomepage" : null,
+    "memberParticipant" : [ ],
+    "@id" : "https://w3id.org/idsa/autogen/participant/ff5e56f0-f031-4bc4-9f53-1b0e0b982d82"
+  } ],
+  "extendedGuarantee" : [ {
+    "properties" : null,
+    "@id" : "https://w3id.org/idsa/code/APP_RESOURCES_LOCAL_ENFORCEMENT"
+  } ],
+  "outboundModelVersion" : [ "4.0.2" ],
+  "hasDefaultEndpoint" : {
+    "@type" : "ids:ConnectorEndpoint",
+    "path" : "path",
+    "endpointArtifact" : null,
+    "endpointInformation" : [ {
+      "@value" : "https://.example.com",
+      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    } ],
+    "endpointDocumentation" : [ "https://.example.com" ],
+    "accessURL" : "https://.example.com",
+    "inboundPath" : "inboundPath",
+    "outboundPath" : "outboundPath",
+    "apiSpecifiation" : [ ],
+    "commMethod" : [ ],
+    "providedByMDP" : [ ],
+    "accessProtocol" : [ ],
+    "@id" : "https://w3id.org/idsa/autogen/connectorEndpoint/9a8648fb-3a83-404d-ba5c-aed10b51eee8"
+  },
+  "physicalLocation" : [ {
+    "@type" : "ids:GeoPoint",
+    "latitude" : 3.0,
+    "longitude" : 4.0,
+    "@id" : "http://api.geonames.org/postalCodeSearch?postalcode=9011&maxRows=10&username=demo"
+  } ],
+  "componentCertification" : [ {
+    "@type" : "ids:ComponentCertification",
+    "version" : null,
+    "lastValidDate" : 972000000000,
+    "description" : [ ],
+    "title" : [ ],
+    "evaluationFacility" : {
+      "@type" : "ids:EvaluationFacility",
+      "@id" : "https://w3id.org/idsa/autogen/evaluationFacility/768f3192-620f-4a33-847e-ed1e4afc6977"
+    },
+    "certificationLevel" : {
+      "properties" : null,
+      "@id" : "https://w3id.org/idsa/code/PARTICIPANT_MEMBER_LEVEL_CONTROL_FRAMEWORK"
+    },
+    "@id" : "https://something.com"
+  } ],
+  "inboundModelVersion" : [ "4.0.2" ],
+  "hasEndpoint" : [ {
+    "@type" : "ids:ConnectorEndpoint",
+    "path" : "path",
+    "endpointArtifact" : null,
+    "endpointInformation" : [ {
+      "@value" : "https://.example.com",
+      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    } ],
+    "endpointDocumentation" : [ "https://.example.com" ],
+    "accessURL" : "https://.example.com",
+    "inboundPath" : "inboundPath",
+    "outboundPath" : "outboundPath",
+    "apiSpecifiation" : [ ],
+    "commMethod" : [ ],
+    "providedByMDP" : [ ],
+    "accessProtocol" : [ ],
+    "@id" : "https://w3id.org/idsa/autogen/connectorEndpoint/06d7a1c2-fdc1-4c56-80ba-1372c060cc0a"
+  } ],
+  "description" : [ {
+    "@value" : "This is the description",
+    "@type" : "http://www.w3.org/2001/XMLSchema#string"
+  } ],
+  "title" : [ {
+    "@value" : "This is the title",
+    "@type" : "http://www.w3.org/2001/XMLSchema#string"
+  } ],
+  "resourceCatalog" : [ ],
+  "authInfo" : {
+    "@type" : "ids:AuthInfo",
+    "authService" : "https://authService.com",
+    "authStandard" : {
+      "properties" : null,
+      "@id" : "https://w3id.org/idsa/code/OAUTH2_JWT"
+    },
+    "@id" : "https://w3id.org/idsa/autogen/authInfo/45c54e86-5cc4-4047-bec8-8ab26866da37"
+  },
+  "curatorAsObject" : [ ],
+  "curatorAsUri" : [ "https://.example.com" ],
+  "maintainerAsUri" : [ ],
+  "hasAgent" : [ "https://.example.com" ],
+  "securityProfile" : {
+    "properties" : null,
+    "@id" : "https://w3id.org/idsa/code/BASE_SECURITY_PROFILE"
+  },
+  "@id" : "https://youruri.com",
+  "as_JSON_LD" : {
+    "@context" : {
+      "ids" : "https://w3id.org/idsa/core/",
+      "idsc" : "https://w3id.org/idsa/code/"
+    },
+    "@type" : "ids:BaseConnector",
+    "@id" : "https://youruri.com",
+    "ids:publicKey" : [ {
+      "@type" : "ids:PublicKey",
+      "@id" : "https://w3id.org/idsa/autogen/publicKey/b907841f-96ba-4c7a-8c46-a42e52800326",
+      "ids:keyType" : {
+        "@id" : "https://w3id.org/idsa/code/RSA"
+      },
+      "ids:keyValue" : "WlRBMFptUXdNakJsWVhNelpESjJNVGd3T0RBd01tSXpNRE13T1dRPQ=="
+    } ],
+    "ids:version" : "v1",
+    "ids:extendedGuarantee" : [ {
+      "@id" : "https://w3id.org/idsa/code/APP_RESOURCES_LOCAL_ENFORCEMENT"
+    } ],
+    "ids:outboundModelVersion" : [ "4.0.2" ],
+    "ids:hasDefaultEndpoint" : {
+      "@type" : "ids:ConnectorEndpoint",
+      "@id" : "https://w3id.org/idsa/autogen/connectorEndpoint/9a8648fb-3a83-404d-ba5c-aed10b51eee8",
+      "ids:path" : "path",
+      "ids:endpointInformation" : [ {
+        "@value" : "https://.example.com",
+        "@type" : "http://www.w3.org/2001/XMLSchema#string"
+      } ],
+      "ids:endpointDocumentation" : [ {
+        "@id" : "https://.example.com"
+      } ],
+      "ids:accessURL" : {
+        "@id" : "https://.example.com"
+      },
+      "ids:inboundPath" : "inboundPath",
+      "ids:outboundPath" : "outboundPath"
+    },
+    "ids:physicalLocation" : [ {
+      "@type" : "ids:GeoPoint",
+      "@id" : "http://api.geonames.org/postalCodeSearch?postalcode=9011&maxRows=10&username=demo",
+      "ids:latitude" : 3.0,
+      "ids:longitude" : 4.0
+    } ],
+    "ids:componentCertification" : [ {
+      "@type" : "ids:ComponentCertification",
+      "@id" : "https://something.com",
+      "ids:lastValidDate" : {
+        "@value" : "2000-10-20T00:00:00.000Z",
+        "@type" : "http://www.w3.org/2001/XMLSchema#dateTimeStamp"
+      },
+      "ids:evaluationFacility" : {
+        "@type" : "ids:EvaluationFacility",
+        "@id" : "https://w3id.org/idsa/autogen/evaluationFacility/768f3192-620f-4a33-847e-ed1e4afc6977"
+      },
+      "ids:certificationLevel" : {
+        "@id" : "https://w3id.org/idsa/code/PARTICIPANT_MEMBER_LEVEL_CONTROL_FRAMEWORK"
+      }
+    } ],
+    "ids:inboundModelVersion" : [ "4.0.2" ],
+    "ids:hasEndpoint" : [ {
+      "@type" : "ids:ConnectorEndpoint",
+      "@id" : "https://w3id.org/idsa/autogen/connectorEndpoint/06d7a1c2-fdc1-4c56-80ba-1372c060cc0a",
+      "ids:path" : "path",
+      "ids:endpointInformation" : [ {
+        "@value" : "https://.example.com",
+        "@type" : "http://www.w3.org/2001/XMLSchema#string"
+      } ],
+      "ids:endpointDocumentation" : [ {
+        "@id" : "https://.example.com"
+      } ],
+      "ids:accessURL" : {
+        "@id" : "https://.example.com"
+      },
+      "ids:inboundPath" : "inboundPath",
+      "ids:outboundPath" : "outboundPath"
+    } ],
+    "ids:description" : [ {
+      "@value" : "This is the description",
+      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    } ],
+    "ids:title" : [ {
+      "@value" : "This is the title",
+      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    } ],
+    "ids:maintainer" : [ {
+      "@type" : "ids:Participant",
+      "@id" : "https://w3id.org/idsa/autogen/participant/ff5e56f0-f031-4bc4-9f53-1b0e0b982d82",
+      "ids:legalForm" : "GmBH"
+    } ],
+    "ids:authInfo" : {
+      "@type" : "ids:AuthInfo",
+      "@id" : "https://w3id.org/idsa/autogen/authInfo/45c54e86-5cc4-4047-bec8-8ab26866da37",
+      "ids:authService" : {
+        "@id" : "https://authService.com"
+      },
+      "ids:authStandard" : {
+        "@id" : "https://w3id.org/idsa/code/OAUTH2_JWT"
+      }
+    },
+    "ids:curator" : [ {
+      "@id" : "https://.example.com"
+    } ],
+    "ids:hasAgent" : [ {
+      "@id" : "https://.example.com"
+    } ],
+    "ids:securityProfile" : {
+      "@id" : "https://w3id.org/idsa/code/BASE_SECURITY_PROFILE"
+    },
+    "as_JSON_LD" : {
+      "@context" : {
+        "ids" : "https://w3id.org/idsa/core/",
+        "idsc" : "https://w3id.org/idsa/code/"
+      },
+      "@type" : "ids:BaseConnector",
+      "@id" : "https://youruri.com",
+      "ids:publicKey" : [ {
+        "@type" : "ids:PublicKey",
+        "@id" : "https://w3id.org/idsa/autogen/publicKey/b907841f-96ba-4c7a-8c46-a42e52800326",
+        "ids:keyType" : {
+          "@id" : "https://w3id.org/idsa/code/RSA"
+        },
+        "ids:keyValue" : "WlRBMFptUXdNakJsWVhNelpESjJNVGd3T0RBd01tSXpNRE13T1dRPQ=="
+      } ],
+      "ids:version" : "v1",
+      "ids:extendedGuarantee" : [ {
+        "@id" : "https://w3id.org/idsa/code/APP_RESOURCES_LOCAL_ENFORCEMENT"
+      } ],
+      "ids:outboundModelVersion" : [ "4.0.2" ],
+      "ids:hasDefaultEndpoint" : {
+        "@type" : "ids:ConnectorEndpoint",
+        "@id" : "https://w3id.org/idsa/autogen/connectorEndpoint/9a8648fb-3a83-404d-ba5c-aed10b51eee8",
+        "ids:path" : "path",
+        "ids:endpointInformation" : [ {
+          "@value" : "https://.example.com",
+          "@type" : "http://www.w3.org/2001/XMLSchema#string"
+        } ],
+        "ids:endpointDocumentation" : [ {
+          "@id" : "https://.example.com"
+        } ],
+        "ids:accessURL" : {
+          "@id" : "https://.example.com"
+        },
+        "ids:inboundPath" : "inboundPath",
+        "ids:outboundPath" : "outboundPath"
+      },
+      "ids:physicalLocation" : [ {
+        "@type" : "ids:GeoPoint",
+        "@id" : "http://api.geonames.org/postalCodeSearch?postalcode=9011&maxRows=10&username=demo",
+        "ids:latitude" : 3.0,
+        "ids:longitude" : 4.0
+      } ],
+      "ids:componentCertification" : [ {
+        "@type" : "ids:ComponentCertification",
+        "@id" : "https://something.com",
+        "ids:lastValidDate" : {
+          "@value" : "2000-10-20T00:00:00.000Z",
+          "@type" : "http://www.w3.org/2001/XMLSchema#dateTimeStamp"
+        },
+        "ids:evaluationFacility" : {
+          "@type" : "ids:EvaluationFacility",
+          "@id" : "https://w3id.org/idsa/autogen/evaluationFacility/768f3192-620f-4a33-847e-ed1e4afc6977"
+        },
+        "ids:certificationLevel" : {
+          "@id" : "https://w3id.org/idsa/code/PARTICIPANT_MEMBER_LEVEL_CONTROL_FRAMEWORK"
+        }
+      } ],
+      "ids:inboundModelVersion" : [ "4.0.2" ],
+      "ids:hasEndpoint" : [ {
+        "@type" : "ids:ConnectorEndpoint",
+        "@id" : "https://w3id.org/idsa/autogen/connectorEndpoint/06d7a1c2-fdc1-4c56-80ba-1372c060cc0a",
+        "ids:path" : "path",
+        "ids:endpointInformation" : [ {
+          "@value" : "https://.example.com",
+          "@type" : "http://www.w3.org/2001/XMLSchema#string"
+        } ],
+        "ids:endpointDocumentation" : [ {
+          "@id" : "https://.example.com"
+        } ],
+        "ids:accessURL" : {
+          "@id" : "https://.example.com"
+        },
+        "ids:inboundPath" : "inboundPath",
+        "ids:outboundPath" : "outboundPath"
+      } ],
+      "ids:description" : [ {
+        "@value" : "This is the description",
+        "@type" : "http://www.w3.org/2001/XMLSchema#string"
+      } ],
+      "ids:title" : [ {
+        "@value" : "This is the title",
+        "@type" : "http://www.w3.org/2001/XMLSchema#string"
+      } ],
+      "ids:maintainer" : [ {
+        "@type" : "ids:Participant",
+        "@id" : "https://w3id.org/idsa/autogen/participant/ff5e56f0-f031-4bc4-9f53-1b0e0b982d82",
+        "ids:legalForm" : "GmBH"
+      } ],
+      "ids:authInfo" : {
+        "@type" : "ids:AuthInfo",
+        "@id" : "https://w3id.org/idsa/autogen/authInfo/45c54e86-5cc4-4047-bec8-8ab26866da37",
+        "ids:authService" : {
+          "@id" : "https://authService.com"
+        },
+        "ids:authStandard" : {
+          "@id" : "https://w3id.org/idsa/code/OAUTH2_JWT"
+        }
+      },
+      "ids:curator" : [ {
+        "@id" : "https://.example.com"
+      } ],
+      "ids:hasAgent" : [ {
+        "@id" : "https://.example.com"
+      } ],
+      "ids:securityProfile" : {
+        "@id" : "https://w3id.org/idsa/code/BASE_SECURITY_PROFILE"
+      },
+      "as_JSON_LD" : {
+        "@context" : {
+          "ids" : "https://w3id.org/idsa/core/",
+          "idsc" : "https://w3id.org/idsa/code/"
+        },
+        "@type" : "ids:BaseConnector",
+        "@id" : "https://youruri.com",
+        "ids:publicKey" : [ {
+          "@type" : "ids:PublicKey",
+          "@id" : "https://w3id.org/idsa/autogen/publicKey/b907841f-96ba-4c7a-8c46-a42e52800326",
+          "ids:keyType" : {
+            "@id" : "https://w3id.org/idsa/code/RSA"
+          },
+          "ids:keyValue" : "WlRBMFptUXdNakJsWVhNelpESjJNVGd3T0RBd01tSXpNRE13T1dRPQ=="
+        } ],
+        "ids:version" : "v1",
+        "ids:extendedGuarantee" : [ {
+          "@id" : "https://w3id.org/idsa/code/APP_RESOURCES_LOCAL_ENFORCEMENT"
+        } ],
+        "ids:outboundModelVersion" : [ "4.0.2" ],
+        "ids:hasDefaultEndpoint" : {
+          "@type" : "ids:ConnectorEndpoint",
+          "@id" : "https://w3id.org/idsa/autogen/connectorEndpoint/9a8648fb-3a83-404d-ba5c-aed10b51eee8",
+          "ids:path" : "path",
+          "ids:endpointInformation" : [ {
+            "@value" : "https://.example.com",
+            "@type" : "http://www.w3.org/2001/XMLSchema#string"
+          } ],
+          "ids:endpointDocumentation" : [ {
+            "@id" : "https://.example.com"
+          } ],
+          "ids:accessURL" : {
+            "@id" : "https://.example.com"
+          },
+          "ids:inboundPath" : "inboundPath",
+          "ids:outboundPath" : "outboundPath"
+        },
+        "ids:physicalLocation" : [ {
+          "@type" : "ids:GeoPoint",
+          "@id" : "http://api.geonames.org/postalCodeSearch?postalcode=9011&maxRows=10&username=demo",
+          "ids:latitude" : 3.0,
+          "ids:longitude" : 4.0
+        } ],
+        "ids:componentCertification" : [ {
+          "@type" : "ids:ComponentCertification",
+          "@id" : "https://something.com",
+          "ids:lastValidDate" : {
+            "@value" : "2000-10-20T00:00:00.000Z",
+            "@type" : "http://www.w3.org/2001/XMLSchema#dateTimeStamp"
+          },
+          "ids:evaluationFacility" : {
+            "@type" : "ids:EvaluationFacility",
+            "@id" : "https://w3id.org/idsa/autogen/evaluationFacility/768f3192-620f-4a33-847e-ed1e4afc6977"
+          },
+          "ids:certificationLevel" : {
+            "@id" : "https://w3id.org/idsa/code/PARTICIPANT_MEMBER_LEVEL_CONTROL_FRAMEWORK"
+          }
+        } ],
+        "ids:inboundModelVersion" : [ "4.0.2" ],
+        "ids:hasEndpoint" : [ {
+          "@type" : "ids:ConnectorEndpoint",
+          "@id" : "https://w3id.org/idsa/autogen/connectorEndpoint/06d7a1c2-fdc1-4c56-80ba-1372c060cc0a",
+          "ids:path" : "path",
+          "ids:endpointInformation" : [ {
+            "@value" : "https://.example.com",
+            "@type" : "http://www.w3.org/2001/XMLSchema#string"
+          } ],
+          "ids:endpointDocumentation" : [ {
+            "@id" : "https://.example.com"
+          } ],
+          "ids:accessURL" : {
+            "@id" : "https://.example.com"
+          },
+          "ids:inboundPath" : "inboundPath",
+          "ids:outboundPath" : "outboundPath"
+        } ],
+        "ids:description" : [ {
+          "@value" : "This is the description",
+          "@type" : "http://www.w3.org/2001/XMLSchema#string"
+        } ],
+        "ids:title" : [ {
+          "@value" : "This is the title",
+          "@type" : "http://www.w3.org/2001/XMLSchema#string"
+        } ],
+        "ids:maintainer" : [ {
+          "@type" : "ids:Participant",
+          "@id" : "https://w3id.org/idsa/autogen/participant/ff5e56f0-f031-4bc4-9f53-1b0e0b982d82",
+          "ids:legalForm" : "GmBH"
+        } ],
+        "ids:authInfo" : {
+          "@type" : "ids:AuthInfo",
+          "@id" : "https://w3id.org/idsa/autogen/authInfo/45c54e86-5cc4-4047-bec8-8ab26866da37",
+          "ids:authService" : {
+            "@id" : "https://authService.com"
+          },
+          "ids:authStandard" : {
+            "@id" : "https://w3id.org/idsa/code/OAUTH2_JWT"
+          }
+        },
+        "ids:curator" : [ {
+          "@id" : "https://.example.com"
+        } ],
+        "ids:hasAgent" : [ {
+          "@id" : "https://.example.com"
+        } ],
+        "ids:securityProfile" : {
+          "@id" : "https://w3id.org/idsa/code/BASE_SECURITY_PROFILE"
+        }
+      }
+    }
+  }
+}

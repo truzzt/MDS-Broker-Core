@@ -1,0 +1,81 @@
+version: '3'
+services:
+  broker-reverseproxy:
+    image: registry.gitlab.cc-asp.fraunhofer.de/eis-ids/broker/reverseproxy
+    volumes:
+      #- /etc/idscert/localhost:/etc/cert/
+      - c:/etc/idscert/localhost:/etc/cert/
+    ports:
+      - "80:80"
+      - "443:443"
+
+  broker-core:
+    image: registry.gitlab.cc-asp.fraunhofer.de/eis-ids/broker/core:5.0.0-MDS-TESTING
+    volumes:
+      #- /etc/idscert/localhost:/etc/cert/
+      - c:/etc/idscert/localhost:/etc/cert/
+    environment:
+      - SPARQL_ENDPOINT=http://broker-fuseki:3030/connectorData
+      - ELASTICSEARCH_HOSTNAME=broker-elasticsearch
+      - SHACL_VALIDATION=true
+      - DAPS_VALIDATE_INCOMING=true
+      - SSL_JAVAKEYSTORE=isstbroker-keystore.jks
+      - COMPONENT_URI=https://localhost/
+      - COMPONENT_CATALOGURI=https://localhost/catalog/
+    depends_on:
+      - "broker-elasticsearch"
+      - "broker-fuseki"
+    expose:
+      - "8080"
+
+  broker-fuseki:
+    image: registry.gitlab.cc-asp.fraunhofer.de/eis-ids/broker/fuseki
+    volumes:
+      - broker-fuseki:/fuseki
+    expose:
+      - "3030"
+
+  broker-elasticsearch:
+    image: elasticsearch:7.16.2
+    volumes:
+      - broker-esdata:/usr/share/elasticsearch/data
+    environment:
+      - http.port=9200
+      - http.cors.enabled=true
+      - http.cors.allow-origin=https://localhost
+      - http.cors.allow-headers=X-Requested-With,X-Auth-Token,Content-Type,Content-Length,Authorization
+      - http.cors.allow-credentials=true
+      - discovery.type=single-node
+    expose:
+      - "9200"
+
+  mongodb:
+    image: mongo:latest
+    volumes:
+      - db:/data/db
+    expose:
+      - "20217"
+
+  back-end:
+    image: registry.gitlab.cc-asp.fraunhofer.de/eis-ids/broker/mongodb-handler
+    environment:
+      - MONGODB_ENDPOINT=mongodb://mongodb:27017/users
+      - JWT_SECRET=somethingsecret
+      - ADMIN_PASSWORD=password
+      - BROKER_URL=http://broker-core:8080
+    depends_on:
+      - "mongodb"
+    expose:
+      - "4000"
+
+  broker-searchfrontend:
+    image: registry.gitlab.cc-asp.fraunhofer.de/eis-ids/broker/frontend:5.0.0-SNAPSHOT
+    environment:
+      - REACT_APP_BROKER_URL=https://localhost
+    expose:
+      - "80"
+
+volumes:
+    broker-fuseki:
+    broker-esdata:
+    db:

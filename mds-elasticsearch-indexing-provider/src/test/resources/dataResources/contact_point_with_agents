@@ -1,0 +1,23 @@
+{
+  "@context" : {
+    "ids" : "https://w3id.org/idsa/core/",
+    "idsc" : "https://w3id.org/idsa/code/"
+  },
+  "@type" : "ids:DataResource",
+  "@id" : "https://test.org/resourche-with-Agents",
+  "http://www.w3.org/ns/dcat#contactPoint" : [ {
+    "@type" : "ids:Person",
+    "@id" : "https://w3id.org/idsa/autogen/participant/1"
+  },{
+    "@type" : "ids:Person",
+    "@id" : "https://w3id.org/idsa/autogen/participant/2"
+  },{
+    "@type" : "ids:Person",
+    "@id" : "https://w3id.org/idsa/autogen/participant/3"
+  } ],
+  "ids:variant" : {
+      "@id": "https://w3id.org/idsa/autogen/resource/ff5e56f0-f031-4bc4-9f53-12w239994r5t",
+      "@type" : "ids:Resource",
+      "ids:standardLicense": "http://example.com/123"
+    }
+}
