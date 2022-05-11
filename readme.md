@@ -62,7 +62,7 @@ docker-compose -up
 ```
 Now open the module *metadata-broker-core* in your favorite IDE (we tested it with Intellij). And run the main in debug mode. It might be that the test fails due to the specified location of the keystore and later due to the validation of the DAPS-certification. To fix the former change the path of the keystore (*ssl.javakeystore*) in your *application.properties* to the exemplary one in the resource folder (*isstbroker-keystore.jks*). Regarding the DAPS-certificate validation: In case that you working in a local setup only and not in a critical infrastructure you can set in your *application.properties* the property *daps.validateIncoming* to *false*. Now runing it should seamlessly work.
 ### Manual Testing
-In order to test the core use-cases of the MetaDataBroker we refer to the provided [Postman Collection](https://github.com/Mobility-Data-Space/MDS-Broker-Core/blob/development/IDS%20Broker%20ES%20Tests%20with%20MDS.postman_collection.json). If you add this collection to you postman workspace you can easily validate the use cases of the broker. By default you find
+In order to test the core use-cases of the MetaDataBroker we refer to the provided [Postman Collection](https://github.com/Mobility-Data-Space/MDS-Broker-Core/blob/development/doc/IDS%20Broker%20ES%20Tests%20with%20MDS.postman_collection.json). If you add this collection to you postman workspace you can easily validate the use cases of the broker. By default you find
 * the elastic search instance under http://localhost:9200; the registered connectors and resources under http://localhost:9200/registrations and http://localhost:9200/resources/, respectively
 
 
@@ -100,7 +100,7 @@ of the connector, respectively, the resource you want to remove. For us this is
 * *https://broker.test.mobilitydataspace.io/connectors/346343534* for the connector and
 * *https://broker.test.mobilitydataspace.io/connectors/346343534/-1343446310/434334386* for a resource under a connector.
 
-To remove these objects - as mentioned earlier - we use the corresponding messages. You can send them with any application you prefer. We will explain the procedure here using [Postman](https://www.postman.com/). We prepared a  particular [collection]() to remove the resource and the connector. If you import the collection into postman you will see something as shown in the figure below.</br></br>
+To remove these objects - as mentioned earlier - we use the corresponding messages. You can send them with any application you prefer. We will explain the procedure here using [Postman](https://www.postman.com/). We prepared a  particular [collection](https://github.com/Mobility-Data-Space/MDS-Broker-Core/blob/development/doc/IDS%20Broker%20ES%20Remove%20Collection.postman_collection.json) to remove the resource and the connector. If you import the collection into postman you will see something as shown in the figure below.</br></br>
 ![Remove Collection](doc/postman_remove_collection.png)</br></br>
 Both cases have in common, that you first have to set the valid DAPS token. This can be done by changing the property
 *ids:tokenValue* of the *ids:securityToken* object.
