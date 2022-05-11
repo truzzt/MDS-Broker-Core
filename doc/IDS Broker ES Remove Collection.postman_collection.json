@@ -1,0 +1,91 @@
+{
+	"info": {
+		"_postman_id": "3fd73ef6-55c9-4037-bf4d-2d055db9cfd1",
+		"name": "IDS Broker ES Remove Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Remove Resource",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "multipart/mixed; boundary=msgpart",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "header",
+							"value": "{\n  \"@context\" : {\n    \"ids\" : \"https://w3id.org/idsa/core/\",\n    \"idsc\" : \"https://w3id.org/idsa/code/\"\n  },\n  \"@type\" : \"ids:ResourceUnavailableMessage\",\n  \"@id\" : \"https://w3id.org/idsa/autogen/connectorUpdateMessage/6d875403-cfea-4aad-979c-3515c2e71967\",\n  \"ids:securityToken\" : {\n    \"@type\" : \"ids:DynamicAttributeToken\",\n    \"@id\" : \"https://w3id.org/idsa/autogen/dynamicAttributeToken/7bbbd2c1-2d75-4e3d-bd10-c52d0381cab0\",\n    \"ids:tokenValue\" : \"{{dat}}\",\n    \"ids:tokenFormat\" : {\n      \"@id\" : \"idsc:JWT\"\n    }\n  },\n  \"ids:senderAgent\" : {\n    \"@id\" : \"http://example.org\"\n  },\n  \"ids:modelVersion\" : \"4.0.0\",\n  \"ids:issuerConnector\" : {\n    \"@id\" : \"https://test.connector.de/testDataModel\"\n  },\n  \"ids:issued\" : {\n    \"@value\" : \"2021-06-23T17:27:23.566+02:00\",\n    \"@type\" : \"http://www.w3.org/2001/XMLSchema#dateTimeStamp\"\n  },\n  \"ids:affectedResource\" : {\n    \"@id\" : \"http://localhost:8080/catalog/1878999150/1198668626/-880408037\"\n  }\n}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/infrastructure",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"infrastructure"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remove Connector",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "multipart/mixed; boundary=msgpart",
+						"disabled": true
+					},
+					{
+						"key": "",
+						"value": "",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "header",
+							"value": "{\n  \"@context\" : {\n    \"ids\" : \"https://w3id.org/idsa/core/\",\n    \"idsc\" : \"https://w3id.org/idsa/code/\"\n  },\n  \"@type\" : \"ids:ConnectorUnavailableMessage\",\n  \"@id\" : \"https://w3id.org/idsa/autogen/connectorUpdateMessage/6d875403-cfea-4aad-979c-3515c2e71967\",\n  \"ids:securityToken\" : {\n    \"@type\" : \"ids:DynamicAttributeToken\",\n    \"@id\" : \"https://w3id.org/idsa/autogen/dynamicAttributeToken/7bbbd2c1-2d75-4e3d-bd10-c52d0381cab0\",\n    \"ids:tokenValue\" : \"eyJ0eXAiOiJKV1QiLCJraWQiOiJkZWZhdWx0IiwiYWxnIjoiUlMyNTYifQ.eyJzY29wZXMiOlsiaWRzYzpJRFNfQ09OTkVDVE9SX0FUVFJJQlVURVNfQUxMIl0sImF1ZCI6Imlkc2M6SURTX0NPTk5FQ1RPUlNfQUxMIiwiaXNzIjoiaHR0cHM6Ly9kYXBzLmFpc2VjLmZyYXVuaG9mZXIuZGUiLCJuYmYiOjE2MzQ2NTA3MzksImlhdCI6MTYzNDY1MDczOSwianRpIjoiTVRneE9EUXdPVFF6TXpZd05qWXlOVFExTUE9PSIsImV4cCI6MTYzNDY1NDMzOSwic2VjdXJpdHlQcm9maWxlIjoiaWRzYzpCQVNFX1NFQ1VSSVRZX1BST0ZJTEUiLCJyZWZlcnJpbmdDb25uZWN0b3IiOiJodHRwOi8vYnJva2VyLmlkcy5pc3N0LmZyYXVuaG9mZXIuZGUuZGVtbyIsIkB0eXBlIjoiaWRzOkRhdFBheWxvYWQiLCJAY29udGV4dCI6Imh0dHBzOi8vdzNpZC5vcmcvaWRzYS9jb250ZXh0cy9jb250ZXh0Lmpzb25sZCIsInRyYW5zcG9ydENlcnRzU2hhMjU2IjoiOTc0ZTYzMjRmMTJmMTA5MTZmNDZiZmRlYjE4YjhkZDZkYTc4Y2M2YTZhMDU2NjAzMWZhNWYxYTM5ZWM4ZTYwMCIsInN1YiI6IjkyOjE0OkU3OkFDOjEwOjIyOkYyOkNDOjA1OjZFOjJBOjJCOjhEOkRCOjEwOkQ2OjREOkEwOkExOjUzOmtleWlkOkNCOjhDOkM3OkI2Ojg1Ojc5OkE4OjIzOkE2OkNCOjE1OkFCOjE3OjUwOjJGOkU2OjY1OjQzOjVEOkU4In0.Qw3gWMgwnKQyVatbsozcin6qtQbLyXlk6QdaLajGaDmxSYqCKEcAje4kiDp5Fqj04WPmVyF0k8c1BJA3KGnaW3Qcikv4MNxqqoenvKIrSTokXsA7-osqBCfxLhV-s2lSXVTAtV_Q7f71eSoR5j-7nPPX8_nf4Xup4_VzfnwRmnuAbLfHfWThbupxFazC34r3waXCltOTFVa_XDlwEDMpPY7vEPeaqIt2t6ofVGo_HF86UB19liL-UZvp0uSE9z2fhloyxOrx9B_xavGS7pP6oRaumSJEN_x9dfdeDS98HQ_oBSSGBzaI4fM7ik35Yg42KQwmkZesD6P_YSEzVLcJDg\",\n    \"ids:tokenFormat\" : {\n      \"@id\" : \"idsc:JWT\"\n    }\n  },\n  \"ids:senderAgent\" : {\n    \"@id\" : \"http://example.org\"\n  },\n  \"ids:modelVersion\" : \"4.0.0\",\n  \"ids:issuerConnector\" : {\n    \"@id\" : \"https://test.connector.de/testDataModel\"\n  },\n  \"ids:issued\" : {\n    \"@value\" : \"2021-06-23T17:27:23.566+02:00\",\n    \"@type\" : \"http://www.w3.org/2001/XMLSchema#dateTimeStamp\"\n  },\n  \"ids:affectedConnector\" : {\n    \"@id\" : \"https://test.connector.de/testDataModel\"\n  }\n}",
+							"type": "text"
+						},
+						{
+							"key": "payload",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/infrastructure",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"infrastructure"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
