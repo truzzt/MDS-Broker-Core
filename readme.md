@@ -22,7 +22,7 @@ Security is currently supported in terms of TLS via a reverse proxy.
 
 ## Architecture
 
-![Broker Architecture](broker_architecture.png)
+![Broker Architecture](doc/broker_architecture.png)
 
 The diagram above provides an overview of the IAIS/EIS Broker's architecture. The technical interface for human users and connectors is supplied
 by a reverse proxy, which serves a GUI and an SSL-secured machine-invokable API. Incoming requests are either served by the web frontend or routed to a message
@@ -86,6 +86,44 @@ cd ./docker
 ```
 If you are on Windows, you have to run the equivalent commands in you preferred command line.
 
+## Maintenance
+### Manual Cleaning of the Broker
+To clean the Persistance module of the MetaDataBroker, two use cases are critical,
+removing a particular resource from a connector and removing a particular connector. Both could be done by accessing the Fuseki server directly, e.g. via SPARQL either form the MetaDataBroker Management interface or from the Fuseki UI. However, at the same time the ElasticSearch Server has to be cleaned. This can become a mess and might lead to inconsistencies between the Fuseki and the ElasticSearch server. At the same time, the IDS [information model](https://github.com/International-Data-Spaces-Association/InformationModel) provides messages for de-registering connectors and removing resources. Both trigger the cleaning of the Fuseki and the ElasticSearch server in a consistent manner. Thus it is highly recommended to use the corresponding messages to perform manual cleaning of the data bases. </br></br>
+
+For what follows we assume that you have a valid
+* (internal) connector,
+* (internal) resources identifier and
+* a valid DAPS token (we will use a placeholder *<DAPS-Token>* for the DAPS token)
+
+of the connector, respectively, the resource you want to remove. For us this is
+* *https://broker.test.mobilitydataspace.io/connectors/346343534* for the connector and
+* *https://broker.test.mobilitydataspace.io/connectors/346343534/-1343446310/434334386* for a resource under a connector.
+
+To remove these objects - as mentioned earlier - we use the corresponding messages. You can send them with any application you prefer. We will explain the procedure here using [Postman](https://www.postman.com/). We prepared a  particular [collection]() to remove the resource and the connector. If you import the collection into postman you will see something as shown in the figure below.</br></br>
+![Remove Collection](doc/postman_remove_collection.png)</br></br>
+Both cases have in common, that you first have to set the valid DAPS token. This can be done by changing the property
+*ids:tokenValue* of the *ids:securityToken* object.
+```json
+"ids:securityToken" : {
+"@type" : "ids:DynamicAttributeToken",
+"@id" : "https://w3id.org/idsa/autogen/dynamicAttributeToken/7bbbd2c1-2d75-4e3d-bd10-c52d0381cab0",
+"ids:tokenValue" : "<DAPS-Token>"
+}
+```
+We continue with removing the resource with the identifier mentioned above. The corresponding messages consists of a header only. To remove the resource, we have to set the id of the resource in the header. Namely, we have to set the property *ids:affectedResource* in the header. The result for us looks like the following
+```json
+"ids:affectedResource" : {
+"@id" : "https://broker.test.mobilitydataspace.io/connectors/346343534/-1343446310/434334386"
+}
+```
+If you have changed that, you can submit you request. If the identifier and the DAPS-Token are valid, the resource will be removed. To remove a connector we proceed almost similar. First we set the DAPS-token as described above. Then we set the *ids:affectedConnector* property in the header of the multipart message to the connector identifier mentioned above. The result for us looks like the following
+```json
+"ids:affectedResource" : {
+"@id" : "https://broker.test.mobilitydataspace.io/connectors/346343534"
+}
+```
+If you have changed that, you can submit you request. If the identifier and the DAPS-Token are valid, the connector will be removed.
 ### Manual Fuseki Backup
 We assume that running the MetaDataBroker container in some environment (e.g. Docker),
 under some *\<url\>* (e.g. localhost:3030). The manual backup can be done in a
@@ -93,8 +131,10 @@ few simple steps. Make sure that the Web-UI of the Fuseki server is available
 from your machine.
 * If you run the MetaDataBroker on your local machine, it is the case. Use http://*\<url\>*.
 * If it is running remotely, you might do a port-forwarding to make it available
-to you. For instance if it is running on a virtual machine use *ssh -L [LOCAL_IP:]LOCAL_PORT:DESTINATION:DESTINATION_PORT*.
-
+to you. For instance if it is running on a virtual machine use
+```sh
+ssh -L [LOCAL_IP:]LOCAL_PORT:DESTINATION:DESTINATION_PORT*.
+```
 We assume, that the Fuseki Web-UI is available to you.
 1. Open the Web-UI
 2. Go to *manage datasets*
