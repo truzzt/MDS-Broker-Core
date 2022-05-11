@@ -9,28 +9,18 @@ else
         read VERSION
 fi
 
-# GENERIC IMAGES
-
-# metadata-broker, fhg-digital-broker & paris
-mvn -f ../ clean package -Drevision=$VERSION
+# metadata-broker,
 cp ../metadata-broker-core/target/metadata-broker-core-*.jar metadata-broker-core/
 
-
-docker build metadata-broker-core/ -t registry.gitlab.cc-asp.fraunhofer.de/eis-ids/broker/core
-
-
-
-#cleanup
-
-#legacy
-rm -rf ../common/target
-
-rm -rf ../index-common/target
-rm -rf ../broker-common/target
-
+docker build metadata-broker-core/ -t mds/broker/core
 
 # fuseki
-docker build fuseki/ -t registry.gitlab.cc-asp.fraunhofer.de/eis-ids/broker/fuseki
+docker build fuseki/ -t mds/broker/fuseki
 
 # reverseproxy
-docker build reverseproxy/ -t registry.gitlab.cc-asp.fraunhofer.de/eis-ids/broker/reverseproxy
+docker build reverseproxy/ -t mds/broker/reverseproxy
+
+
+docker tag mds/broker/core:latest mds/broker/core:${VERSION}
+docker tag mds/broker/fuseki:latest mds/broker/fuseki:${VERSION}
+docker tag mds/broker/reverseproxy:latest mds/broker/reverseproxy:${VERSION}
