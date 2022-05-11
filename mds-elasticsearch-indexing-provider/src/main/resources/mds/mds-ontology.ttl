@@ -101,17 +101,14 @@ cat:WeatherInformation a mds:DataCategory ;
 cat:PublicTransportInformation a mds:DataCategory ;
   rdfs:label "Public Transport Information"@en .
 
-cat:EmergencyAlertWarning a mds:DataCategory ;
-  rdfs:label "Emergency Alert Warning"@en .
-
 cat:CarBikeSharing a mds:DataCategory ;
   rdfs:label "Car & Bike Sharing"@en .
 
 cat:Infrastructure a mds:DataCategory ;
   rdfs:label "Infrastructure"@en .
 
-cat:Miscellaneous a mds:DataCategory ;
-  rdfs:label "Miscellaneous"@en .
+cat:Various a mds:DataCategory ;
+  rdfs:label "Various"@en .
 
  # Controlled vocabulary for Data Subcategory
 
@@ -130,13 +127,13 @@ sub:StaticTrafficSigns a mds:TrafficSignsSpeedInformation ;
 sub:RealtimeTrafficFlowData a mds:TrafficFlowInformation ;
   rdfs:label "Realtime Traffic Flow Data"@en .
 
-sub:CargoLogistics a mds:Miscellaneous ;
+sub:CargoLogistics a mds:Various ;
   rdfs:label "Cargo & Logistiks"@en .
 
 sub:PedestrianNetworks a mds:Infrastructure ;
   rdfs:label "Pedestrian Networks"@en .
 
-sub:TollInformation a mds:Miscellaneous ;
+sub:TollInformation a mds:Various ;
   rdfs:label "Toll information"@en .
 
 sub:Timetables a mds:PublicTransportInformation ;
