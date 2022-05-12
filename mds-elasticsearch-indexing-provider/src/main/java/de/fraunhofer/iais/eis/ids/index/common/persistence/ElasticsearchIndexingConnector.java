@@ -1,11 +1,5 @@
 package de.fraunhofer.iais.eis.ids.index.common.persistence;
 
-import java.io.IOException;
-import java.math.BigInteger;
-import java.net.URI;
-import java.util.Iterator;
-import java.util.stream.Collectors;
-
 import de.fraunhofer.iais.eis.*;
 import de.fraunhofer.iais.eis.ids.index.common.persistence.spi.Indexing;
 import de.fraunhofer.iais.eis.util.TypedLiteral;
@@ -273,8 +267,16 @@ public class ElasticsearchIndexingConnector implements Indexing<InfrastructureCo
         if(resource.getContentStandard() != null)
             fbw.x(() -> builder.field("contentStandard", resource.getContentStandard().toString()), "contentStandard");
 
-        if(resource.getPublisher() != null) {
-            fbw.x(() -> builder.field("publisher", resource.getPublisher().toString()), "publisher");
+        if(resource.getPublisherAsObject() != null) {
+            builder.startObject("publisherAsObject");
+            if (resource.getPublisherAsObject() instanceof Participant) {
+                ElasticsearchIndexingParticipant.handleParticipantFields((Participant) resource.getPublisherAsObject(), builder);
+            } else {
+                ElasticsearchIndexingParticipant.handleAgentFields(resource.getPublisherAsObject(), builder);
+            }
+            builder.endObject();
+        } else if (resource.getPublisherAsUri() != null) {
+            fbw.x(() -> builder.field("publisherAsUri", resource.getPublisherAsUri().toString()), "publisherAsUri");
         }
     }
 
@@ -841,7 +843,7 @@ public class ElasticsearchIndexingConnector implements Indexing<InfrastructureCo
         }
         try {
             String originID = infrastructureComponent.getProperties().get("http://www.w3.org/2002/07/owl#sameAs").toString();
-            fbw.x(() -> builder.field( "lastChanged", java.lang.System.currentTimeMillis()),"lastChanged");
+            fbw.x(() -> builder.field( "lastChanged", System.currentTimeMillis()),"lastChanged");
             String formattedOriginID = originID.substring(5, originID.length() - 1);
             fbw.x(() -> builder.field("originURI", formattedOriginID), "resourceAsJsonLd");
 
@@ -886,10 +888,28 @@ public class ElasticsearchIndexingConnector implements Indexing<InfrastructureCo
      * @param infrastructureComponent Connector to be indexed
      * @param builder Builder to which provider details should be added
      */
-    protected void handleConnectorProviderDetails(InfrastructureComponent infrastructureComponent, XContentBuilder builder)
-    {
-        fbw.x(() -> builder.field("maintainer", infrastructureComponent.getMaintainerAsUri().toString()), "maintainer");
-        fbw.x(() -> builder.field("curator", infrastructureComponent.getCuratorAsUri().toString()), "curator");
+    protected void handleConnectorProviderDetails(InfrastructureComponent infrastructureComponent, XContentBuilder builder) throws IOException {
+        // TODO: Find out why setting the other variant to empty is necessary for maintainer and curator
+        //       but not for sovereign and publisher
+        if(infrastructureComponent.getMaintainerAsObject() != null) {
+            builder.startObject("maintainerAsObject");
+            ElasticsearchIndexingParticipant.handleParticipantFields(infrastructureComponent.getMaintainerAsObject(), builder);
+            builder.endObject();
+            builder.nullField("maintainerAsUri");
+        } else if (infrastructureComponent.getMaintainerAsUri() != null) {
+            fbw.x(() -> builder.field("maintainerAsUri", infrastructureComponent.getMaintainerAsUri().toString()), "maintainerAsUri");
+            builder.nullField("maintainerAsObject");
+        }
+
+        if(infrastructureComponent.getCuratorAsObject() != null) {
+            builder.startObject("curatorAsObject");
+            ElasticsearchIndexingParticipant.handleParticipantFields(infrastructureComponent.getCuratorAsObject(), builder);
+            builder.endObject();
+            builder.nullField("curatorAsUri");
+        } else if (infrastructureComponent.getCuratorAsUri() != null) {
+            fbw.x(() -> builder.field("curatorAsUri", infrastructureComponent.getCuratorAsUri().toString()), "curatorAsUri");
+            builder.nullField("curatorAsObject");
+        }
     }
 
     //Possible TODO: We only handle offers. In case that we want to handle requests as well, we should take care of that here

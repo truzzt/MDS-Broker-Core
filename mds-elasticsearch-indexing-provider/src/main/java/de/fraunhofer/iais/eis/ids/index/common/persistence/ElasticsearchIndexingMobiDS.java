@@ -1,8 +1,6 @@
 package de.fraunhofer.iais.eis.ids.index.common.persistence;
 
 import de.fraunhofer.iais.eis.*;
-import de.fraunhofer.iais.eis.ids.index.common.persistence.ElasticsearchIndexing;
-import de.fraunhofer.iais.eis.ids.index.common.persistence.RepositoryFacade;
 import org.apache.jena.query.QuerySolution;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
@@ -15,7 +13,6 @@ import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.action.search.SearchRequest;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.RequestOptions;
-import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.common.xcontent.XContentBuilder;
 import org.elasticsearch.common.xcontent.XContentFactory;
 import org.elasticsearch.index.query.QueryBuilders;
@@ -26,7 +23,10 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.net.URI;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class ElasticsearchIndexingMobiDS extends ElasticsearchIndexing {
@@ -86,7 +86,6 @@ public class ElasticsearchIndexingMobiDS extends ElasticsearchIndexing {
                 if(resourceCatalog.getOfferedResourceAsObject() != null && !resourceCatalog.getOfferedResourceAsObject().isEmpty()) {
                     for (Resource resource : resourceCatalog.getOfferedResourceAsObject()) {
                         XContentBuilder builder = XContentFactory.jsonBuilder();
-
                         builder.startObject();
                         handleResource(resource, builder, connector.getId());
                         builder.endObject();
@@ -136,9 +135,9 @@ public class ElasticsearchIndexingMobiDS extends ElasticsearchIndexing {
 
 
     @Override
-    protected void handleResourceCustomFields( Resource resource, XContentBuilder builder, URI connectorId)  {
+    protected void handleResourceCustomFields( Resource resource, XContentBuilder builder, URI connectorId) throws IOException {
         fbw.x(() -> builder.field("resourceAsJsonLd", resource.toRdf()), "resourceAsJsonLd");
-        fbw.x(() -> builder.field( "lastChanged", java.lang.System.currentTimeMillis()),"lastChanged");
+        fbw.x(() -> builder.field( "lastChanged", System.currentTimeMillis()),"lastChanged");
       /*  try {
             String originID = resource.getProperties().get("http://www.w3.org/2002/07/owl#sameAs").toString();
             String formattedOriginID = originID.substring(1, originID.length() - 2);
@@ -155,8 +154,17 @@ public class ElasticsearchIndexingMobiDS extends ElasticsearchIndexing {
         catch (Exception e) {
             logger.error("Could not find Property: sameAs ");
         }
-        if(resource.getSovereign() != null)
-            fbw.x(() -> builder.field("sovereign", resource.getSovereign().toString()),"sovereign");
+        if(resource.getSovereignAsObject() != null) {
+            builder.startObject("sovereignAsObject");
+            if (resource.getSovereignAsObject() instanceof Participant) {
+                ElasticsearchIndexingParticipant.handleParticipantFields((Participant) resource.getSovereignAsObject(), builder);
+            } else {
+                ElasticsearchIndexingParticipant.handleAgentFields(resource.getSovereignAsObject(), builder);
+            }
+            builder.endObject();
+        } else if (resource.getSovereignAsUri() != null) {
+            fbw.x(() -> builder.field("sovereignAsUri", resource.getSovereignAsUri().toString()), "sovereignAsUri");
+        }
 
 //        if(resource.getDomainVocabulary() != null) {
 //            if(resource.getDomainVocabulary().getVocabulary() != null)

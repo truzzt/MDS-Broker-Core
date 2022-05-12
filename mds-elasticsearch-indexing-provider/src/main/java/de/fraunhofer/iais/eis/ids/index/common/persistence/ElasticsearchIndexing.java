@@ -192,9 +192,17 @@ public class ElasticsearchIndexing extends ElasticsearchIndexingConnector {
             logger.error("Could not find Property: sameAs ");
         }
 
-        if(resource.getSovereign() != null)
-            fbw.x(() -> builder.field("sovereign", resource.getSovereign().toString()),"sovereign");
-
+        if(resource.getSovereignAsObject() != null) {
+            builder.startObject("sovereignAsObject");
+            if (resource.getSovereignAsObject() instanceof Participant) {
+                ElasticsearchIndexingParticipant.handleParticipantFields((Participant) resource.getSovereignAsObject(), builder);
+            } else {
+                ElasticsearchIndexingParticipant.handleAgentFields(resource.getSovereignAsObject(), builder);
+            }
+            builder.endObject();
+        } else if (resource.getSovereignAsUri() != null) {
+            fbw.x(() -> builder.field("sovereignAsUri", resource.getSovereignAsUri().toString()), "sovereignAsUri");
+        }
 
         //domain specific terms to be fetched from fuseki
 

@@ -33,46 +33,46 @@ mds:TransportMode a owl:Class ;
 mds:dataCategory a owl:ObjectProperty ;
   rdfs:domain ids:DataResource ;
   rdfs:range mds:DataCategory ;
-  rdfs:label "has data category"@en .
+  rdfs:label "Data category"@en .
 
 mds:dataSubcategory a owl:ObjectProperty ;
   rdfs:domain ids:DataResource ;
   rdfs:range mds:DataSubcategory ;
-  rdfs:label "data subcategory"@en .
+  rdfs:label "Data subcategory"@en .
 
 mds:transportMode a owl:ObjectProperty ;
   rdfs:domain ids:DataResource ;
   rdfs:range mds:TransportMode ;
-  rdfs:label "transport mode"@en .
+  rdfs:label "Transport mode"@en .
 
 mds:geoReferenceMethod a owl:DatatypeProperty ;
   rdfs:domain ids:DataResource ;
   rdfs:range rdfs:Literal ;
-  rdfs:label "geo reference method"@en .
+  rdfs:label "Geo reference method"@en .
 
 mds:dataModel a owl:DatatypeProperty ;
   rdfs:domain ids:DataResource ;
   rdfs:range rdfs:Literal ;
-  rdfs:label "data model"@en .
+  rdfs:label "Data model"@en .
 
 mds:dataFormatAdditionalDescription a owl:DatatypeProperty ;
   rdfs:domain ids:DataResource ;
   rdfs:range rdfs:Literal ;
-  rdfs:label "additional description for the data format"@en .
+  rdfs:label "Additional description for the data format"@en .
 
 # Controlled vocabulary for TransportMode
 
 tmode:Rail a mds:TransportMode ;
-  rdfs:label "rail"@en .
+  rdfs:label "Rail"@en .
 
 tmode:Road a mds:TransportMode ;
-  rdfs:label "road"@en .
+  rdfs:label "Road"@en .
 
 tmode:Water a mds:TransportMode ;
-  rdfs:label "water"@en .
+  rdfs:label "Water"@en .
 
 tmode:Air a mds:TransportMode ;
-  rdfs:label "air"@en .
+  rdfs:label "Air"@en .
 
 
 # Controlled vocabulary for Data Category
@@ -101,17 +101,14 @@ cat:WeatherInformation a mds:DataCategory ;
 cat:PublicTransportInformation a mds:DataCategory ;
   rdfs:label "Public Transport Information"@en .
 
-cat:EmergencyAlertWarning a mds:DataCategory ;
-  rdfs:label "Emergency Alert Warning"@en .
-
 cat:CarBikeSharing a mds:DataCategory ;
   rdfs:label "Car & Bike Sharing"@en .
 
 cat:Infrastructure a mds:DataCategory ;
   rdfs:label "Infrastructure"@en .
 
-cat:Miscellaneous a mds:DataCategory ;
-  rdfs:label "Miscellaneous"@en .
+cat:Various a mds:DataCategory ;
+  rdfs:label "Various"@en .
 
  # Controlled vocabulary for Data Subcategory
 
@@ -128,15 +125,15 @@ sub:StaticTrafficSigns a mds:TrafficSignsSpeedInformation ;
   rdfs:label "Static Traffic Signs"@en .
 
 sub:RealtimeTrafficFlowData a mds:TrafficFlowInformation ;
-  rdfs:label "RealtimeTrafficFlowData"@en .
+  rdfs:label "Realtime Traffic Flow Data"@en .
 
-sub:CargoLogistics a mds:Miscellaneous ;
+sub:CargoLogistics a mds:Various ;
   rdfs:label "Cargo & Logistiks"@en .
 
 sub:PedestrianNetworks a mds:Infrastructure ;
   rdfs:label "Pedestrian Networks"@en .
 
-sub:TollInformation a mds:Miscellaneous ;
+sub:TollInformation a mds:Various ;
   rdfs:label "Toll information"@en .
 
 sub:Timetables a mds:PublicTransportInformation ;
@@ -155,10 +152,10 @@ sub:Roadworks a mds:RoadworksRoadConditions ;
   rdfs:label "Roadworks"@en .
 
 sub:RoadConditions a mds:RoadworksRoadConditions ;
-  rdfs:label "RoadConditions"@en .
+  rdfs:label "Road Conditions"@en .
 
 sub:FuelPrice a mds:FuelPriceElectromobility ;
-  rdfs:label "FuelPrice"@en .
+  rdfs:label "Fuel Price"@en .
 
 sub:FuelPrice a mds:FuelPriceElectromobility ;
   rdfs:label "Electromobility"@en .
