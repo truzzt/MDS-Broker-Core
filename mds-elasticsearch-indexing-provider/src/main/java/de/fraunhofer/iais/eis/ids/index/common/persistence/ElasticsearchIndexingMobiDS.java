@@ -4,10 +4,12 @@ import de.fraunhofer.iais.eis.*;
 import org.apache.jena.query.QuerySolution;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
+import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.rdf.model.Statement;
 import org.apache.jena.riot.Lang;
 import org.apache.jena.riot.RDFDataMgr;
 import org.apache.jena.vocabulary.OWL;
+import org.apache.jena.vocabulary.RDFS;
 import org.elasticsearch.action.delete.DeleteRequest;
 import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.action.search.SearchRequest;
@@ -23,23 +25,21 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.net.URI;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class ElasticsearchIndexingMobiDS extends ElasticsearchIndexing {
 
     final private Logger logger = LoggerFactory.getLogger(ElasticsearchIndexing.class);
     public static final String RESOURCE_INDEX = "resources"; // previously: "mdmresources"; see also the recreation of the index at Broker-Paris-Core-Container --> metadata-brkoer-core --> SelfDescriptionPersistenceAndIndexing.refreshIndex() where the hard-coded index names are used!
-
+    final private Map<String, String> mdsUriToLabelMap = new HashMap<>();
     /**
      * Constructor
      *
      */
     public ElasticsearchIndexingMobiDS() {
         super();
+        createMdsIdToLabelMap();
     }
 
     @Override
@@ -203,6 +203,18 @@ public class ElasticsearchIndexingMobiDS extends ElasticsearchIndexing {
         return domainAttrs;
     }
 
+    private void createMdsIdToLabelMap() {
+        Model model = ModelFactory.createDefaultModel();
+        RDFDataMgr.read(model, Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("mds/mds-ontology.ttl")), Lang.TTL);
+
+        model.listStatements(null, RDFS.label, (String) null)
+                .forEach(statement -> {
+                    org.apache.jena.rdf.model.Resource subject = statement.getSubject();
+                    RDFNode object = statement.getObject();
+                    mdsUriToLabelMap.put(subject.getURI(), object.asLiteral().getString());
+                });
+    }
+
     private void queryAndIndexDomainAttrs( Resource resource, String domainAttr, XContentBuilder builder, URI connectorId) throws IOException {
         String query = "PREFIX ids: <https://w3id.org/idsa/core/> \n " +
                 "PREFIX mds: <http://w3id.org/mds#>  \n" +
@@ -218,7 +230,23 @@ public class ElasticsearchIndexingMobiDS extends ElasticsearchIndexing {
             if (tupleQueryResult != null && !tupleQueryResult.isEmpty()) {
                 List<String> someValues = tupleQueryResult.stream().map(tuple -> tuple.getLiteral("?values").toString()).collect(Collectors.toList());
                 if (!someValues.isEmpty() && someValues.get(0) != null) {
-                    fbw.x(() -> builder.field(domainAttr, someValues), domainAttr);
+                    // If the values are URIs, map them to the labels which are connected to these URIs in the mds-ontology.ttl
+                    List<String> someLabels = new ArrayList<>();
+                    someValues.forEach( value -> {
+                        List<String> splittedValues = Arrays.asList(value.split(","));
+                        splittedValues.forEach(splittedValue -> {
+                            if (!splittedValue.isEmpty()) {
+                                splittedValue = splittedValue.strip();
+                                String label = mdsUriToLabelMap.getOrDefault(splittedValue, splittedValue);
+                                if (splittedValue.startsWith("http") && label.contains(splittedValue)) {
+                                    logger.info("Missing label for " + splittedValue + ". Using URI instead.");
+                                }
+                                someLabels.add(label);
+                            }
+                        });
+
+                    });
+                    fbw.x(() -> builder.field(domainAttr, someLabels), domainAttr);
                 }
                 else{
                     logger.info("Empty query results for domain Attributes");
