@@ -81,7 +81,7 @@ cat:TrafficInformation a mds:DataCategory ;
   rdfs:label "Traffic Information"@en .
 
 cat:RoadworksRoadConditions a mds:DataCategory ;
-  rdfs:label "Roadworks & RoadConditions"@en .
+  rdfs:label "Roadworks & Road Conditions"@en .
 
 cat:TrafficFlowInformation a mds:DataCategory ;
   rdfs:label "Traffic Flow Information"@en .
@@ -90,7 +90,7 @@ cat:ParkingInformation a mds:DataCategory ;
   rdfs:label "Parking Information"@en .
 
 cat:FuelPriceElectromobility a mds:DataCategory ;
-  rdfs:label "FuelPrice & Electromobility"@en .
+  rdfs:label "Fuel Price & Electromobility"@en .
 
 cat:TrafficSignsSpeedInformation a mds:DataCategory ;
   rdfs:label "Traffic Signs & Speed Information"@en .
@@ -113,7 +113,7 @@ cat:Various a mds:DataCategory ;
  # Controlled vocabulary for Data Subcategory
 
 sub:GeneralInformationAboutPlanningOfRoutes a cat:Infrastructure ;
-  rdfs:label "General information about planning of routes"@en .
+  rdfs:label "General Information About Planning Of Routes"@en .
 
 sub:DynamicSpeedInformation a mds:TrafficSignsSpeedInformation ;
   rdfs:label "Dynamic Speed Information"@en .
@@ -134,7 +134,7 @@ sub:PedestrianNetworks a mds:Infrastructure ;
   rdfs:label "Pedestrian Networks"@en .
 
 sub:TollInformation a mds:Various ;
-  rdfs:label "Toll information"@en .
+  rdfs:label "Toll Information"@en .
 
 sub:Timetables a mds:PublicTransportInformation ;
   rdfs:label "Timetables"@en .
@@ -143,10 +143,10 @@ sub:Fare a mds:PublicTransportInformation ;
   rdfs:label "Fare"@en .
 
 sub:LocationInformation a mds:PublicTransportInformation ;
-  rdfs:label "Location information"@en .
+  rdfs:label "Location Information"@en .
 
 sub:CyclingNetworks a mds:Infrastructure ;
-  rdfs:label "Cycling networks"@en .
+  rdfs:label "Cycling Networks"@en .
 
 sub:Roadworks a mds:RoadworksRoadConditions ;
   rdfs:label "Roadworks"@en .
