@@ -919,6 +919,19 @@ public class ElasticsearchIndexingConnector implements Indexing<InfrastructureCo
             for (Resource resource : catalog.getOfferedResourceAsObject()) {
                 builder.startObject();
                 fbw.x(() -> builder.field("resourceID", resource.getId().toString()), "resourceID");
+
+                if(resource.getTitle() != null)
+                    fbw.x(() -> builder.field("title", resource.getTitle().stream().map(TypedLiteral::getValue).collect(Collectors.toList())), "title");
+
+                if(resource.getDescription() != null)
+                    fbw.x(() -> builder.field("description", resource.getDescription().stream().map(TypedLiteral::getValue).collect(Collectors.toList())), "description");
+
+                if(resource.getKeyword() != null)
+                    fbw.x(() -> builder.field("keyword", resource.getKeyword().stream().map(TypedLiteral::getValue).collect(Collectors.toList())), "keywords");
+
+                if(resource.getDescription() != null)
+                    fbw.x(() -> builder.field("description", resource.getDescription().stream().map(TypedLiteral::getValue).collect(Collectors.toList())), "description");
+
                 builder.endObject();
             }
             for (URI resourceUri : catalog.getOfferedResourceAsUri()) {
