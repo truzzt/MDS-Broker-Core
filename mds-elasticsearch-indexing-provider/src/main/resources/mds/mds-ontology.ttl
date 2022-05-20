@@ -112,7 +112,7 @@ cat:Various a mds:DataCategory ;
 
  # Controlled vocabulary for Data Subcategory
 
-sub:GeneralInformationAboutPlanningOfRoutes a cat:Infrastructure ;
+sub:GeneralInformationAboutPlanningOfRoutes a mds:Infrastructure ;
   rdfs:label "General Information About Planning Of Routes"@en .
 
 sub:DynamicSpeedInformation a mds:TrafficSignsSpeedInformation ;
