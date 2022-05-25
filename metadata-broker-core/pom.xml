@@ -7,14 +7,10 @@
         <groupId>de.fraunhofer.iais.eis.ids</groupId>
         <artifactId>broker-mds-core-container</artifactId>
         <version>${revision}</version>
-
     </parent>
 
     <artifactId>metadata-broker-core</artifactId>
     <packaging>jar</packaging>
-
-
-
 
     <dependencies>
         <dependency>
@@ -56,15 +52,7 @@
             <version>0.0.20131108.vaadin1</version>
             <scope>test</scope>
         </dependency>
-
-        <dependency>
-            <groupId>org.testcontainers</groupId>
-            <artifactId>elasticsearch</artifactId>
-            <version>1.15.3</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
-
 
     <profiles>
         <profile>
