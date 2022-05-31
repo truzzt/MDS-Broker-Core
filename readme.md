@@ -28,6 +28,8 @@ The diagram above provides an overview of the IAIS/EIS Broker's architecture. Th
 by a reverse proxy, which serves a GUI and an SSL-secured machine-invokable API. Incoming requests are either served by the web frontend or routed to a message
 handler component, which, depending on the message type, accesses the backend storage systems.   
 
+### Container Dependencies
+![Container Dependencies](doc/broker_container_dependencies.png)
 
 ## Building the MDS-Extention MetaDataBroker
 ### Buildung the Open Source MetaDataBroker
