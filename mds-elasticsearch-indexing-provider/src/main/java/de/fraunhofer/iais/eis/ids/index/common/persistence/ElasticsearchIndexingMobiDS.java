@@ -33,6 +33,7 @@ public class ElasticsearchIndexingMobiDS extends ElasticsearchIndexing {
     final private Logger logger = LoggerFactory.getLogger(ElasticsearchIndexing.class);
     public static final String RESOURCE_INDEX = "resources"; // previously: "mdmresources"; see also the recreation of the index at Broker-Paris-Core-Container --> metadata-brkoer-core --> SelfDescriptionPersistenceAndIndexing.refreshIndex() where the hard-coded index names are used!
     final private Map<String, String> mdsUriToLabelMap = new HashMap<>();
+
     /**
      * Constructor
      *
@@ -40,6 +41,30 @@ public class ElasticsearchIndexingMobiDS extends ElasticsearchIndexing {
     public ElasticsearchIndexingMobiDS() {
         super();
         createMdsIdToLabelMap();
+    }
+
+    private static String getOntologyQuery(URI connectorId, String resourceId, String domainAttr) {
+        return  "PREFIX ids: <https://w3id.org/idsa/core/> \n " +
+                "PREFIX mds: <http://w3id.org/mds#>  \n" +
+                "SELECT (GROUP_CONCAT(DISTINCT ?value;SEPARATOR=\", \") AS ?values) WHERE {\n" +
+                "  GRAPH <" + connectorId + "> {" +
+                "  <"+resourceId+"> a ids:DataResource;\n" +
+                "  "+domainAttr+" ?value .\n" +
+                "} }";
+    }
+
+    private void createMdsIdToLabelMap() {
+        // importing the ontology into a rdf model
+        Model model = ModelFactory.createDefaultModel();
+        RDFDataMgr.read(model, Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("mds/mds-ontology.ttl")), Lang.TTL);
+
+        // Extracting structural mappings out of the ontology
+        model.listStatements(null, RDFS.label, (String) null)
+                .forEach(statement -> {
+                    org.apache.jena.rdf.model.Resource subject = statement.getSubject();
+                    RDFNode object = statement.getObject();
+                    mdsUriToLabelMap.put(subject.getURI(), object.asLiteral().getString());
+                });
     }
 
     @Override
@@ -203,50 +228,40 @@ public class ElasticsearchIndexingMobiDS extends ElasticsearchIndexing {
         return domainAttrs;
     }
 
-    private void createMdsIdToLabelMap() {
-        Model model = ModelFactory.createDefaultModel();
-        RDFDataMgr.read(model, Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("mds/mds-ontology.ttl")), Lang.TTL);
 
-        model.listStatements(null, RDFS.label, (String) null)
-                .forEach(statement -> {
-                    org.apache.jena.rdf.model.Resource subject = statement.getSubject();
-                    RDFNode object = statement.getObject();
-                    mdsUriToLabelMap.put(subject.getURI(), object.asLiteral().getString());
-                });
-    }
 
     private void queryAndIndexDomainAttrs( Resource resource, String domainAttr, XContentBuilder builder, URI connectorId) throws IOException {
-        String query = "PREFIX ids: <https://w3id.org/idsa/core/> \n " +
-                "PREFIX mds: <http://w3id.org/mds#>  \n" +
-                "SELECT (GROUP_CONCAT(DISTINCT ?value;SEPARATOR=\", \") AS ?values) WHERE {\n" +
-                "  GRAPH <" + connectorId + "> {" +
-                "  <"+resource.getId().toString()+"> a ids:DataResource;\n" +
-                "  "+domainAttr+" ?value .\n" +
-                "} }";
+        // prepare adjusted query
+        String query = getOntologyQuery(connectorId,resource.getId().toString(),domainAttr);
 
-
+        // perform select query
         ArrayList<QuerySolution> tupleQueryResult = repo.selectQuery(query);
+
+        // Analyze the query results regarding the structure of the ontology
         try {
             if (tupleQueryResult != null && !tupleQueryResult.isEmpty()) {
-                List<String> someValues = tupleQueryResult.stream().map(tuple -> tuple.getLiteral("?values").toString()).collect(Collectors.toList());
-                if (!someValues.isEmpty() && someValues.get(0) != null) {
+                List<String> extractedValueList = tupleQueryResult.stream().map(tuple -> tuple.getLiteral("?values").toString()).collect(Collectors.toList());
+                if (!extractedValueList.isEmpty() && extractedValueList.get(0) != null) {
                     // If the values are URIs, map them to the labels which are connected to these URIs in the mds-ontology.ttl
-                    List<String> someLabels = new ArrayList<>();
-                    someValues.forEach( value -> {
+                    List<String> mappedURIsList = new ArrayList<>();
+                    extractedValueList.forEach( value -> {
                         List<String> splittedValues = Arrays.asList(value.split(","));
                         splittedValues.forEach(splittedValue -> {
                             if (!splittedValue.isEmpty()) {
                                 splittedValue = splittedValue.strip();
+                                // map the uri to the desired labels
                                 String label = mdsUriToLabelMap.getOrDefault(splittedValue, splittedValue);
                                 if (splittedValue.startsWith("http") && label.contains(splittedValue)) {
                                     logger.info("Missing label for " + splittedValue + ". Using URI instead.");
                                 }
-                                someLabels.add(label);
+                                // adding the labels to the result set
+                                mappedURIsList.add(label);
                             }
                         });
 
                     });
-                    fbw.x(() -> builder.field(domainAttr, someLabels), domainAttr);
+                    // prepare and map the fields to be added to the fuseki
+                    fbw.x(() -> builder.field(domainAttr, mappedURIsList), domainAttr);
                 }
                 else{
                     logger.info("Empty query results for domain Attributes");

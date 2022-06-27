@@ -3,16 +3,18 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>de.fraunhofer.iais.eis.ids</groupId>
+        <artifactId>broker-mds-core-container</artifactId>
+        <version>${revision}</version>
+    </parent>
 
-    <groupId>de.fraunhofer.iais.eis.ids</groupId>
     <artifactId>mds-elasticsearch-indexing-provider</artifactId>
-    <version>${revision}</version>
+    <packaging>jar</packaging>
 
     <properties>
-        <revision>5.0.0-RELEASECANDIDATE</revision>
         <jackson.version>2.11.2</jackson.version>
         <junit.version>4.13</junit.version>
-        <ids-component.version>5.0.0-SNAPSHOT</ids-component.version>
     </properties>
 
     <dependencies>
@@ -40,7 +42,7 @@
         <dependency>
             <groupId>de.fraunhofer.iais.eis.ids</groupId>
             <artifactId>open-index-common</artifactId>
-            <version>${ids-component.version}</version>
+            <version>${ids-components.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>de.fraunhofer.iais.eis.ids.infomodel</groupId>
@@ -52,7 +54,7 @@
         <dependency>
             <groupId>de.fraunhofer.iais.eis.ids</groupId>
             <artifactId>infomodel-serializer</artifactId>
-            <version>${ids-component.version}</version>
+            <version>${ids-components.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>de.fraunhofer.iais.eis.ids.infomodel</groupId>
@@ -72,7 +74,7 @@
         <dependency>
             <groupId>de.fraunhofer.iais.eis.ids.infomodel</groupId>
             <artifactId>java</artifactId>
-            <version>${ids-component.version}</version>
+            <version>${ids-components.version}</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
