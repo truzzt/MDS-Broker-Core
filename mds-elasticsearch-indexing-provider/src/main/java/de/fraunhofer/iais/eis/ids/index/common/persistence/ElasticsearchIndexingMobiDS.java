@@ -48,7 +48,7 @@ public class ElasticsearchIndexingMobiDS extends ElasticsearchIndexing {
                 "PREFIX mds: <http://w3id.org/mds#>  \n" +
                 "SELECT (GROUP_CONCAT(DISTINCT ?value;SEPARATOR=\", \") AS ?values) WHERE {\n" +
                 "  GRAPH <" + connectorId + "> {" +
-                "  <"+resourceId+"> a ids:DataResource;\n" +
+                "  <"+resourceId+"> a ids:Resource;\n" +
                 "  "+domainAttr+" ?value .\n" +
                 "} }";
     }
