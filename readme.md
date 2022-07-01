@@ -37,7 +37,7 @@ As the MetaDataBroker is an extension to the open source implementation of the M
 ```sh
 git clone https://github.com/International-Data-Spaces-Association/metadata-broker-open-core.git
 ```
-'cd' into the repository and checkout the branch or tag you want to use as a basis for the MetaDataBroker extension of the open source broker. **Important**: Currently we are sitting on a particular [feature branch](https://github.com/International-Data-Spaces-Association/metadata-broker-open-core/tree/feature/fixUpdatingResources) of the open source MetaDataBroker. Please have in mind, that the extension was provided with respect to a particular release of the open source broker as well as the [information model](https://github.com/International-Data-Spaces-Association/InformationModel). </br></br> Now that you have chosen your preferred branch or tag of the open source MetaDataBroker you simply build it with maven
+'cd' into the repository and checkout the branch or tag you want to use as a basis for the MetaDataBroker extension of the open source broker. Please have in mind, that the extension was provided with respect to a particular release of the open source broker as well as the [information model](https://github.com/International-Data-Spaces-Association/InformationModel). </br></br> Now that you have chosen your preferred branch or tag of the open source MetaDataBroker you simply build it with maven
 ```sh
 mvn clean package
 ```

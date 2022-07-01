@@ -1,6 +1,10 @@
 # Changelog for elasticsearch-indexing-provider
 All notable changes to this project will be documented in this file.
 
+## [development] - 27.06.2022
+### refactored
+- refactoring and testing of the feature that maps properties of resources related to a particular ontology, known by the broker. After refactoring these properties can be provided not only with references to the ontology but also with key value pairs. 
+
 ## [feature/improveMdsLabelDisplaying] - 11.05.2022
 ### Added
 - Mapping from MDS ontology URIs (e.g. `cat:RoadworksRoadConditions`) to the labels linked with a `rdfs:label` property.

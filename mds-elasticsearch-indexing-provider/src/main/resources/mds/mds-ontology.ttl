@@ -115,55 +115,55 @@ cat:Various a mds:DataCategory ;
 sub:GeneralInformationAboutPlanningOfRoutes a cat:Infrastructure ;
   rdfs:label "General Information About Planning Of Routes"@en .
 
-sub:DynamicSpeedInformation a mds:TrafficSignsSpeedInformation ;
+sub:DynamicSpeedInformation a cat:TrafficSignsSpeedInformation ;
   rdfs:label "Dynamic Speed Information"@en .
 
-sub:DynamicTrafficSigns a mds:TrafficSignsSpeedInformation ;
+sub:DynamicTrafficSigns a cat:TrafficSignsSpeedInformation ;
   rdfs:label "Dynamic Traffic Signs"@en .
 
-sub:StaticTrafficSigns a mds:TrafficSignsSpeedInformation ;
+sub:StaticTrafficSigns a cat:TrafficSignsSpeedInformation ;
   rdfs:label "Static Traffic Signs"@en .
 
-sub:RealtimeTrafficFlowData a mds:TrafficFlowInformation ;
+sub:RealtimeTrafficFlowData a cat:TrafficFlowInformation ;
   rdfs:label "Realtime Traffic Flow Data"@en .
 
-sub:CargoLogistics a mds:Various ;
+sub:CargoLogistics a cat:Various ;
   rdfs:label "Cargo & Logistiks"@en .
 
-sub:PedestrianNetworks a mds:Infrastructure ;
+sub:PedestrianNetworks a cat:Infrastructure ;
   rdfs:label "Pedestrian Networks"@en .
 
-sub:TollInformation a mds:Various ;
+sub:TollInformation a cat:Various ;
   rdfs:label "Toll Information"@en .
 
-sub:Timetables a mds:PublicTransportInformation ;
+sub:Timetables a cat:PublicTransportInformation ;
   rdfs:label "Timetables"@en .
 
-sub:Fare a mds:PublicTransportInformation ;
+sub:Fare a cat:PublicTransportInformation ;
   rdfs:label "Fare"@en .
 
-sub:LocationInformation a mds:PublicTransportInformation ;
+sub:LocationInformation a cat:PublicTransportInformation ;
   rdfs:label "Location Information"@en .
 
-sub:CyclingNetworks a mds:Infrastructure ;
+sub:CyclingNetworks a cat:Infrastructure ;
   rdfs:label "Cycling Networks"@en .
 
-sub:Roadworks a mds:RoadworksRoadConditions ;
+sub:Roadworks a cat:RoadworksRoadConditions ;
   rdfs:label "Roadworks"@en .
 
-sub:RoadConditions a mds:RoadworksRoadConditions ;
+sub:RoadConditions a cat:RoadworksRoadConditions ;
   rdfs:label "Road Conditions"@en .
 
-sub:FuelPrice a mds:FuelPriceElectromobility ;
+sub:FuelPrice a cat:FuelPriceElectromobility ;
   rdfs:label "Fuel Price"@en .
 
-sub:FuelPrice a mds:FuelPriceElectromobility ;
+sub:FuelPrice a cat:FuelPriceElectromobility ;
   rdfs:label "Electromobility"@en .
 
-sub:RoadNetwork a mds:Infrastructure ;
+sub:RoadNetwork a cat:Infrastructure ;
   rdfs:label "Road Network"@en .
 
-sub:WaterRoutes a mds:Infrastructure ;
+sub:WaterRoutes a cat:Infrastructure ;
   rdfs:label "Water Routes"@en .
 
 

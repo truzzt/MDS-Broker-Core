@@ -8,9 +8,19 @@
         <version>${revision}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>de.fraunhofer.iais.eis.ids</groupId>
+        <artifactId>broker-mds-core-container</artifactId>
+        <version>${revision}</version>
+    </parent>
 
     <artifactId>mds-elasticsearch-indexing-provider</artifactId>
-    <version>${revision}</version>
+    <packaging>jar</packaging>
+
+    <properties>
+        <jackson.version>2.11.2</jackson.version>
+        <junit.version>4.13</junit.version>
+    </properties>
 
     <dependencies>
         <dependency>
