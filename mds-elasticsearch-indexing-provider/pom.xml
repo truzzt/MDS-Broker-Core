@@ -2,6 +2,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>broker-mds-core-container</artifactId>
+        <groupId>de.fraunhofer.iais.eis.ids</groupId>
+        <version>${revision}</version>
+    </parent>
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>de.fraunhofer.iais.eis.ids</groupId>
@@ -154,28 +159,5 @@
             </plugin>
         </plugins>
     </build>
-
-    <repositories>
-        <repository>
-        <id>eis-public-repo</id>
-        <name>maven-public</name>
-        <url>https://maven.iais.fraunhofer.de/artifactory/eis-ids-public</url>
-    </repository>
-        <repository>
-            <id>eis-ids-intern</id>
-            <name>maven-internal</name>
-            <url>http://maven.iais.fraunhofer.de/artifactory/eis-ids-intern</url>
-        </repository>
-        <repository>
-            <id>snapshots</id>
-            <name>maven-internal</name>
-            <url>http://maven.iais.fraunhofer.de/artifactory/eis-ids-snapshot</url>
-        </repository>
-        <repository>
-            <id>public</id>
-            <name>maven-internal</name>
-            <url>http://maven.iais.fraunhofer.de/artifactory/eis-ids-public</url>
-        </repository>
-    </repositories>
 
 </project>

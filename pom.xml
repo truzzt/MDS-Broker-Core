@@ -19,7 +19,6 @@
     <version>${revision}</version>
     <packaging>pom</packaging>
 
-
     <modules>
         <module>index-common</module>
         <module>broker-common</module>
@@ -38,7 +37,7 @@
         <dependency>
             <groupId>org.testcontainers</groupId>
             <artifactId>testcontainers</artifactId>
-            <version>1.12.5</version>
+            <version>1.17.1</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
