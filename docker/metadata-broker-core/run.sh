@@ -2,23 +2,11 @@
 
 echo "Starting Spring boot app"
 
-echo "Assign JAVA_HOME path from environment" 
-#JAVA_HOME=$(find / -name jre)
-
-
-#JAVA_HOME=$(/usr/lib/jvm/java-11-openjdk-amd64)
-#JAVAHOME =${JAVA_HOME}
-#cd /path/to/jre/bin
-echo --- Copying cacerts and daps to opt/docker/etc 
-cp /usr/lib/jvm/java-11-openjdk-amd64/lib/security/cacerts /opt/docker/etc/cacerts
-cp daps.crt /opt/docker/etc/
-CACERTS=/opt/docker/etc/cacerts
-
-#CACERTS=${JAVAHOME}/lib/security/cacerts
+CACERTS=/opt/java/openjdk/lib/security/cacerts
 
 KEYSTORE_PASS=changeit
 
-DAPS_CERT=daps.crt 
+DAPS_CERT=/etc/cert/daps.crt 
 
 ARGS="-Djava.security.egd=file:/dev/./urandom -Dsparql.url=${SPARQL_ENDPOINT}  -Delasticsearch.hostname=${ELASTICSEARCH_HOSTNAME} -Djavax.net.ssl.keyStorePassword=${KEYSTORE_PASS} -Ddaps.certifcatePath=${DAPS_CERT}"
 
