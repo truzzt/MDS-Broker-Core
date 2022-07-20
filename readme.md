@@ -78,8 +78,6 @@ As the MetaDataBroker needs access to a Fuseki Server as well as an ElasticSearc
 * an instance of a [Fuseki-Server](https://github.com/Mobility-Data-Space/MDS-Broker-Core/blob/development/docker/fuseki/Dockerfile) as well as
 * an instance of an NGINX as [reverse proxy](https://github.com/Mobility-Data-Space/MDS-Broker-Core/blob/development/docker/reverseproxy/Dockerfile).
 Moreover, to demonstrate the local deployment of the MetaDataBroker setup to Docker we provide a [Docker-compose file](https://github.com/Mobility-Data-Space/MDS-Broker-Core/blob/development/docker/composefiles/localhost/docker-compose.yml).
-
-
 ### Building the Docker images
 If you are on linux, building the Docker images is rather simple. We provide a [shell script](https://github.com/Mobility-Data-Space/MDS-Broker-Core/blob/development/docker/buildImages.sh) to build the images. We assume that you already build the MetaDataBroker as described in section "Building". Now you "cd" into the *docker* folder and run the shell script
 ```sh
@@ -87,6 +85,29 @@ cd ./docker
 ./buildimages.sh
 ```
 If you are on Windows, you have to run the equivalent commands in you preferred command line.
+
+## Managing DAPS certificate
+### Make certificate file accessable.</br></br>
+1. Adding certificate file to the docker image while building. </br> 
+Dockerfile:</br>
+ADD daps.crt /etc/cert/daps.crt</br>
+2. Adding the certificate file via volumes</br>
+The actual Implementation (broker: 5.0.2-MDS) expects the DAPS certificate file in a folder which is mounted to the path /etc/cert/ in the docker container.
+docker-compose.yml-example:</br>
+ broker-core:</br>
+    image: registry.gitlab.cc-asp.fraunhofer.de/eis-ids/broker/core:5.0.2-MDS</br>
+    volumes:</br>
+      - c:/etc/cert:/etc/cert/</br>
+
+
+### Add certificate to the java key store.</br></br>
+The daps certificate must be added to the java key store. This goes in three ways:</br>
+1. You logged in as root using the keytool command</br>
+2. In the Dockerfile</br>
+3. in the script (/run.sh) whats the broker proccess starts</br>
+</br></br>
+
+
 
 ## Maintenance
 ### Manual Cleaning of the Broker
