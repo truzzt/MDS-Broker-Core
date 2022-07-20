@@ -105,6 +105,8 @@ The daps certificate must be added to the java key store. This goes in three way
 1. You logged in as root using the keytool command</br>
 2. In the Dockerfile</br>
 3. in the script (/run.sh) whats the broker proccess starts</br>
+Important: Where the java key store is located depends on the docker image java installation. In our case its:
+$JAVA_HOME/lib/security
 </br></br>
 
 
