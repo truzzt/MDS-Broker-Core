@@ -46,6 +46,10 @@ public class ElasticsearchIndexingParticipant implements Indexing<Participant> {
     }
 
 
+    @Override
+    public void addResourceAsJson(String resoruceID, String resourceAsJson) {
+        logger.info(String.format("addResourceAsJson (class:%s : not implemented",this.getClass().toString()));
+    }
 
     /**
      * Function for adding a participant to the index

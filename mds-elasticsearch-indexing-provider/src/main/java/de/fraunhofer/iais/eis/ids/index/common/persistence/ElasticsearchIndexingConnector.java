@@ -50,7 +50,10 @@ public class ElasticsearchIndexingConnector implements Indexing<InfrastructureCo
     }
 
 
-
+    @Override
+    public void addResourceAsJson(String resoruceID, String resourceAsJson) {
+        logger.info(String.format("addResourceAsJson (class:%s : not implemented",this.getClass().toString()));
+    }
 
     /**
      * Function for adding an infrastructure component, such as a connector, to the index
