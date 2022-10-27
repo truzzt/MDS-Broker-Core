@@ -1,0 +1,21 @@
+@startuml
+
+artifact nginx
+artifact bc as "broker-core"
+database Fuseki
+database ElasticSearch
+
+artifact searchfrontend as "search-frontend"
+artifact searchbackend as "search-backend"
+database MongoDB
+
+nginx --> bc
+nginx --> searchfrontend
+nginx --> ElasticSearch
+nginx --> searchbackend
+
+bc -- Fuseki
+bc -- ElasticSearch
+searchbackend -- MongoDB
+
+@enduml

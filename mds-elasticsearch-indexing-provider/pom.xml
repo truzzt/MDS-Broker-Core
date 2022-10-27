@@ -8,12 +8,6 @@
         <version>${revision}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>de.fraunhofer.iais.eis.ids</groupId>
-        <artifactId>broker-mds-core-container</artifactId>
-        <version>${revision}</version>
-    </parent>
-
     <artifactId>mds-elasticsearch-indexing-provider</artifactId>
     <packaging>jar</packaging>
 
