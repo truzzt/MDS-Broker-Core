@@ -168,7 +168,7 @@
         <dependency>
             <groupId>de.fraunhofer.iais.eis.ids.infomodel</groupId>
             <artifactId>java</artifactId>
-            <version>${ids-components.version}</version>
+            <version>${ids-infomodel.version}</version>
         </dependency>
 
     </dependencies>
